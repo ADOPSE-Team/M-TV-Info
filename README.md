@@ -3,9 +3,6 @@
 ## Project:
 * ASP.NET Core + Angular + MongoDB
 
-## How to Deploy:
-* 
-
 ### Created by:
 * [Καρανικόλας Γιώργος](https://github.com/SeijinD)
 * [Τσιλίκας Ιωάννης](https://github.com/Ioatsi)
