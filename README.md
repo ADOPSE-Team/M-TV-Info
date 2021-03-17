@@ -1,7 +1,10 @@
 # M-TV-Info
 
 ## Project:
-* ASP.NET Core + Angular + Mongo
+* ASP.NET Core + Angular + MongoDB
+
+## Steps to perform it:
+* 
 
 ### Created by:
 * [Καρανικόλας Γιώργος](https://github.com/SeijinD)
