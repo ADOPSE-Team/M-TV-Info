@@ -3,7 +3,7 @@
 ## Project:
 * ASP.NET Core + Angular + MongoDB
 
-## Steps to perform it:
+## How to Deploy:
 * 
 
 ### Created by:
