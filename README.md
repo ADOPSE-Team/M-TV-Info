@@ -7,7 +7,7 @@ Install
 * Install Node.js (Latest Version: 15.11.0) || Versions that npm version is: ^6.11.0 || ^7.5.6
 * Install Angular 11
 
-API folder is .NET Core API Project
+API folder is .NET Core API Project </br>
 client folder is Angular 11 Project
 
 Commands
