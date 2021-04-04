@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class TheMovieDbController : ControllerBase
+    public class TheMovieDbTrendingController : ControllerBase
     {
 
         // Trending ALL
@@ -34,7 +34,7 @@ namespace API.Controllers
 
            return data;
        }
-       
-        
+
+
     }
 }
