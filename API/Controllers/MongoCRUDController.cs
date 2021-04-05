@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System;
 using API.Models;
 
-namespace API.Services
+namespace API.Controllers
 {
     public class MongoCRUD
     {
