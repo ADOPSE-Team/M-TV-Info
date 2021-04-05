@@ -11,7 +11,7 @@ namespace API.Controllers
     {
         private IMongoDatabase db;
 
-        public MongoCRUD(string database) 
+        public MongoCRUD(string database = "ADOPSE") 
         { 
             var client = new MongoClient("mongodb://localhost:27017/");
             db = client.GetDatabase(database); //"ADOPSE"

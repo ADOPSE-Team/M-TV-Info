@@ -57,7 +57,7 @@ namespace API
                 endpoints.MapControllers();
             });
 
-            MongoCRUD db = new MongoCRUD("ADOPSE");
+            MongoCRUD db = new MongoCRUD();
             //db.Insert(new USER_model { EMAIL = "asd", BIRTH = new DateTime(), COUNTRY = "", USERNAME = "asd" });
             var user_list = db.getList<USER_model>();
 
