@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using API.Controllers;
+using API.Models;
 
 namespace API
 {
@@ -54,6 +56,16 @@ namespace API
             {
                 endpoints.MapControllers();
             });
+
+            MongoCRUD db = new MongoCRUD();
+            //db.Insert(new USER_model { EMAIL = "asd", BIRTH = new DateTime(), COUNTRY = "", USERNAME = "asd" });
+            var user_list = db.getList<USER_model>();
+
+            var user = db.getRecord<USER_model>(new Guid("172a92d3-c063-44e7-9fdc-ad3c067d418a"));
+            user.USERNAME = "Doctor PDH Salambasis";
+            user.EMAIL = "XDDDDDDDDDDDDD@XD.com";
+            user.BIRTH = new DateTime(1666, 6, 13, 0, 0, 0, DateTimeKind.Local);
+            db.Upsert<USER_model>(user.ID, user);
         }
     }
 }
