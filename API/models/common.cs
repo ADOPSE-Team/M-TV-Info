@@ -9,10 +9,16 @@ namespace API.Models
             { typeof(FAVOURITE_model), "FAVOURITE" },    
             { typeof(RATING_model), "RATING" },    
             { typeof(ROLE_model), "ROLES" },
-            { typeof(MEDIA_LOOKUP_model), "TV_LOOKUP" },
+            { typeof(MEDIA_LOOKUP_model), "MEDIA_LOOKUP" },
             { typeof(USER_model), "USERS" },
             { typeof(WATCHLIST_ITEM_model), "WATCHLIST_ITEM" },
             { typeof(WATCHLIST_model), "WATCHLIST" } 
+        };
+
+        public enum MediaType 
+        {
+            Movie,
+            TV_Show
         };
 
         public static string TypeToTable<T>(){

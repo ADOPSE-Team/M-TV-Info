@@ -46,6 +46,13 @@ namespace API.Controllers
                 new ReplaceOptions { IsUpsert = true });
         }
 
+        public void UpsertMedia(MEDIA_LOOKUP_model record)
+        {
+            var collection = db.GetCollection<MEDIA_LOOKUP_model>("MEDIA_LOOKUP");
+            var existing = collection.Find(Builders<MEDIA_LOOKUP_model>.Filter.Eq("MEDIA_ID", record.MEDIA_ID)).FirstOrDefault();
+            if (existing == null) collection.InsertOne(record);
+        }
+
         //delete method
         public void Delete<T>(Guid id) 
         { 

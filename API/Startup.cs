@@ -66,6 +66,9 @@ namespace API
             user.EMAIL = "XDDDDDDDDDDDDD@XD.com";
             user.BIRTH = new DateTime(1666, 6, 13, 0, 0, 0, DateTimeKind.Local);
             db.Upsert<USER_model>(user.ID, user);
+
+            var res = TVcontroller.getTrendingMovies(TMDbLib.Objects.Trending.TimeWindow.Week);
+            var r = TVcontroller.searchMedia("game of thrones", new TVcontroller.SearchMediaOptions { type = TMDbLib.Objects.General.MediaType.Tv });
         }
     }
 }
