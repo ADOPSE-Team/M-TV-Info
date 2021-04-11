@@ -4,16 +4,10 @@
 ## How to Deploy:
 Install
 * Install .NET Core 5.0.2
-* Install Node.js (Latest Version: 15.11.0) || Versions that npm version is: ^6.11.0 || ^7.5.6
-* Install Angular 11
 
-API folder is .NET Core API Project </br>
-client folder is Angular 11 Project
-
-Commands
-* cd API -> dotnet run
-* cd client -> npm install --save-dev @angular-devkit/build-angular (Only first time)
-* cd client -> ng serve [(Check Angular 11)](http://localhost:4200/)
+1. Fork/Clone
+2. Update Migration
+3. ...
 
 ### Created by:
 * [Καρανικόλας Γιώργος](https://github.com/SeijinD)
