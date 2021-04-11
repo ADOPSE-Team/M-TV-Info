@@ -18,7 +18,7 @@ namespace API.Controllers
 
             return data;
         }
-
+        
        // Trending Via Type and Date
        [HttpGet("{type}/{days}")]
        // days --> {day, week}
