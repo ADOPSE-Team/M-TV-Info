@@ -1,5 +1,5 @@
 ## Project:
-* ASP.NET Core + Angular + MongoDB
+* ASP.NET Core + Razor + SQL
 
 ## How to Deploy:
 Install
