@@ -6,8 +6,8 @@ Install
 * Install .NET Core 5.0.2
 
 1. Fork/Clone
-2. Update Migration
-3. ...
+2. Enable-Migrations
+3. Update-Database
 
 ### Created by:
 * [Καρανικόλας Γιώργος](https://github.com/SeijinD)
