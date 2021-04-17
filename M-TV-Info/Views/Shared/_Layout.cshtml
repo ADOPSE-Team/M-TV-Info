@@ -26,8 +26,8 @@
                         </li>
                         <li class="searchBoxLi">
                             <input type="search" placeholder="Enter text to search" class="searchBox">
-                            <img src="~/assets/favoriteListButton.png" width="25" height="25" style="padding: 5px;" class='favB'>
-                            <img src="~/assets/watchlistButton.png" width="25" height="25" style="padding: 5px;" class='watchB'>
+                            <a asp-controller="Home" asp-action="Favorites"><img src="~/assets/favoriteListButton.png" width="25" height="25" style="padding: 5px;" class='favB'></a>
+                            <a asp-controller="Home" asp-action="Watchlist"><img src="~/assets/watchlistButton.png" width="25" height="25" style="padding: 5px;" class='watchB'></a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

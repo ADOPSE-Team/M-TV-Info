@@ -28,6 +28,22 @@ namespace M_TV_Info.Controllers
             return View();
         }
 
+        public IActionResult Watchlist() 
+        {
+            return View();
+        }
+        public IActionResult Ratings()
+        {
+            return View();
+        }
+        public IActionResult Favorites()
+        {
+            return View();
+        }
+        public IActionResult MovieView()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
