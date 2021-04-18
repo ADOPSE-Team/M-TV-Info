@@ -3,18 +3,23 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using API.Helpers;
 using M_TV_Info.Models;
+using M_TV_Info.Models.TMDbModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace M_TV_Info.Controllers
 {
-    public class TheMovieDbController : Controller
+    public class TrendingsController : Controller
     {
-        // {type} -> all || movie || tv || person -> {def: all}
-        [HttpGet("trendings/")]
+
+        // GET /trendings
+        // [HttpGet("trendings/{movie}&{week}")]
         public async Task<TrendingsModel> GetTrendings(string? type, string? timeWindow)
         {
             HttpClient http = new HttpClient();
+
+            // {type} -> all || movie || tv || person -> {def: all}
+            // {timeWindow} -> day || week -> {def: week}
 
             // Check type & timeWindow
             if(type is null) type = "all";
@@ -31,13 +36,6 @@ namespace M_TV_Info.Controllers
             }
 
             return null;
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            var model = await GetTrendings("", "");
-
-            return View(model);
         }
     }
 }
