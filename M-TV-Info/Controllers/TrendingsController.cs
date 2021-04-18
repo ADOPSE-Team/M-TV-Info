@@ -11,10 +11,18 @@ namespace M_TV_Info.Controllers
 {
     public class TrendingsController : Controller
     {
+        
+        // Return View
+        public IActionResult Trendings(string? type, string? timeWindow){
+            
+            var model = GetTrendings(type, timeWindow);
+
+            return View(model);
+        }
 
         // GET /trendings
         // [HttpGet("trendings/{movie}&{week}")]
-        public async Task<TrendingsModel> GetTrendings(string? type, string? timeWindow)
+        private async Task<TrendingsModel> GetTrendings(string? type, string? timeWindow)
         {
             HttpClient http = new HttpClient();
 
