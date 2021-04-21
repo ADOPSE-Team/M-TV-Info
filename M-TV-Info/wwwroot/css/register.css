@@ -1,0 +1,29 @@
+﻿#float {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #725AC1;
+    border-radius: 25px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.col-md-4 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: -50%;
+    margin-right: -50%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+select {
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 6px;
+}
+
+label {
+    color: white;
+}
