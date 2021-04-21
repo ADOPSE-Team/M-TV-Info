@@ -55,10 +55,6 @@ namespace M_TV_Info.Areas.Identity.Pages.Account
             [Display(Name = "Name")]
             public string Name { get; set; }
 
-            [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-            [Display(Name = "Surname")]
-            public string Surname { get; set; }
-
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -74,6 +70,14 @@ namespace M_TV_Info.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Birthday")]
+            public DateTime Birthday { get; set; }
+
+            [Required]
+            [Display(Name = "Country")]
+            public String Country { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -88,7 +92,7 @@ namespace M_TV_Info.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Username, Name = Input.Name, Surname = Input.Surname, Email = Input.Email };
+                var user = new User { UserName = Input.Username, Name = Input.Name, Email = Input.Email, Birthday = Input.Birthday, Country = Input.Country };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
