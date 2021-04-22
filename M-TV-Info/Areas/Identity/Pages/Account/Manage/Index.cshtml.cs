@@ -97,16 +97,73 @@ namespace M_TV_Info.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
+            if (Input.Username != ((User)user).UserName)
+            {
+                if (Input.Username == null)
+                {
+                    StatusMessage = "Username can't be empty.";
+                    return RedirectToPage();
+                }
+
+                var userNameExists = await _userManager.FindByNameAsync(Input.Username);
+                if (userNameExists != null)
+                {
+                    StatusMessage = "User name already taken. Select a different username.";
+                    return RedirectToPage();
+                }
+
+                var setUserName = await _userManager.SetUserNameAsync(user, Input.Username);
+                if (!setUserName.Succeeded)
+                {
+                    StatusMessage = "Unexpected error when trying to set user name.";
+                    return RedirectToPage();
+                }
+                else
+                {
+                    ((User)user).UserName = Input.Username;
+                    updateUser = true;
+                }
+            }
+
             if (Input.Name != ((User)user).Name)
             {
-                ((User)user).Name = Input.Name;
-                updateUser = true;
+                if (Input.Name == null)
+                {
+                    StatusMessage = "Name can't be empty.";
+                    return RedirectToPage();
+                }
+                else
+                { 
+                    ((User)user).Name = Input.Name;
+                    updateUser = true;
+                }
             }
 
             if (Input.Email != ((User)user).Email)
             {
-                ((User)user).Email = Input.Email;
-                updateUser = true;
+                if (Input.Email == null)
+                {
+                    StatusMessage = "Email can't be empty.";
+                    return RedirectToPage();
+                }
+
+                var emailExists = await _userManager.FindByEmailAsync(Input.Email);
+                if (emailExists != null)
+                {
+                    StatusMessage = "Email already taken. Select a different email.";
+                    return RedirectToPage();
+                }
+
+                if (Input.Email == null)
+                {
+                    StatusMessage = "Email can't be empty.";
+                    return RedirectToPage();
+                }
+                else
+                {
+                    ((User)user).Email = Input.Email;
+                    updateUser = true;
+                }
             }
 
             if (Input.Birthday != ((User)user).Birthday)
@@ -124,10 +181,14 @@ namespace M_TV_Info.Areas.Identity.Pages.Account.Manage
             if (updateUser)
             {
                 await _userManager.UpdateAsync(user);
+                StatusMessage = "Your profile has been updated!";
+            }
+            else
+            {
+                StatusMessage = "Nothing changed.";
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated!!!";
             return RedirectToPage();
         }
     }
