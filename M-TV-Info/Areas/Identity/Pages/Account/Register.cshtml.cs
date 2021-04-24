@@ -22,17 +22,20 @@ namespace M_TV_Info.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -105,6 +108,26 @@ namespace M_TV_Info.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+
+                    // If first user, create roles and add admin role to the new user
+                    // Else add user role to user
+                    bool roleExists = await _roleManager.RoleExistsAsync("Admin");
+                    if (roleExists)
+                    {
+                        await _userManager.AddToRoleAsync(user, "User");
+                    }
+                    else
+                    {
+                        var role = new IdentityRole();
+                        role.Name = "Admin";
+                        await _roleManager.CreateAsync(role);
+
+                        role = new IdentityRole();
+                        role.Name = "User";
+                        await _roleManager.CreateAsync(role);
+
+                        await _userManager.AddToRoleAsync(user, "Admin");
+                    }
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
