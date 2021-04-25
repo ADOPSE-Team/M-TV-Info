@@ -97,7 +97,13 @@ body {
   border-radius:25px;
   padding: .5rem 1rem;
   display: grid;
-  grid-template-areas: 'searchBox button1 button2';
+  grid-template-areas: 'searchBox button1 button2 button 3';
+}
+
+.rateB {
+    grid-area: button3;
+    width: 40px;
+    height: 35px;
 }
 .watchB{
   grid-area:button2;
@@ -221,4 +227,43 @@ h1.movieTitle {
 .carousel-inner{
     grid-column: 2/ span 3;
 
+}
+.movieList{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+}
+.movieEntry {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content:space-between;
+    gap: 50px;
+    width:1000px
+}
+.deleteButton{
+    justify-self:flex-end;
+}
+div.watchlist{
+    display:flex;
+    flex-wrap:wrap;
+    gap:100px;
+}
+
+div.ratingList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+div.favorites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+div.rating{
+    display:flex;
+}
+.ratingButtons{
+    display:flex;
+    gap:10px;
 }
