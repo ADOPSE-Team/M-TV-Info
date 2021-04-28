@@ -10,9 +10,9 @@ namespace M_TV_Info.Controllers
     public class MovieController : Controller
     {
         // Return View
-        public IActionResult Movie(int id){
+        public async Task<IActionResult> Movie(int id){
             
-            var model = GetMovie(id);
+            var model = await GetMovie(id);
 
             return View(model);
         }
@@ -28,8 +28,10 @@ namespace M_TV_Info.Controllers
                 var content = await data.Result.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<MovieModel>(content);
             }
-
-            return null;
+            else
+            {
+                return null;
+            }
         }
     }
 }

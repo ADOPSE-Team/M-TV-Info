@@ -1,4 +1,6 @@
-﻿@{
+﻿@model M_TV_Info.Models.TMDbModels.TrendingsModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <link rel="stylesheet" href="~/css/site - Copy.css" />
@@ -12,17 +14,21 @@
                 <span class="sr-only">Prev</span>
             </a>
             <div class="carousel-inner">
+                <!-- Trending Movies Carousel-->
                 <div class="carousel-item active">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/2.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/3.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/4.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/5.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/6.jpg" class="d-block w-100" alt="..."></a>
+                        @foreach (var movie in Model.results)
+                        {
+                            <p>@movie.title</p>
+                        }
+                        @* @foreach(var item in Model.results){
+                            <a asp-controller="Home" asp-action="MovieView">
+                                <img src="@item.poster_path" class="d-block w-100" alt="@item.title">
+                            </a>
+                        } *@
                     </div>
                 </div>
-                <div class="carousel-item">
+                @* <div class="carousel-item">
                     <div id="col">
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
@@ -31,7 +37,7 @@
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
                     </div>
-                </div>
+                </div> *@
             </div>
             <a class="carousel-control-next" href="#TrendingMovies" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>

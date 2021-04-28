@@ -68,7 +68,10 @@ namespace M_TV_Info
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 
-
+                endpoints.MapControllerRoute(
+                    name: "trending",
+                    pattern: "{controller=Trendings}/{action=Trendings}}");
+                    
                 endpoints.MapControllerRoute(
                     name: "search",
                     pattern: "{controller=Search}/{action=Search}");

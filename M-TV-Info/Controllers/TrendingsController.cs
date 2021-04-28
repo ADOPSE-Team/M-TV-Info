@@ -13,16 +13,17 @@ namespace M_TV_Info.Controllers
     {
         
         // Return View
-        public IActionResult Trendings(string? type, string? timeWindow){
+        // [HttpGet]
+        public async Task<IActionResult> Index(){
             
-            var model = GetTrendings(type, timeWindow);
+            var model = await GetTrendings("movie", "day");
 
             return View(model);
         }
 
         // GET /trendings
         // [HttpGet("trendings/{movie}&{week}")]
-        private async Task<TrendingsModel> GetTrendings(string? type, string? timeWindow)
+        private async Task<TrendingsModel> GetTrendings(string type, string timeWindow)
         {
             HttpClient http = new HttpClient();
 
@@ -34,15 +35,15 @@ namespace M_TV_Info.Controllers
             if(timeWindow is null) timeWindow = "day";
             
             
-            var data = http.GetAsync("https://api.themoviedb.org/3/trending/" + type + "/" 
+            var data = await http.GetAsync("https://api.themoviedb.org/3/trending/" + type + "/" 
                                         + timeWindow + "?api_key=" + Constants.ApiKey);
             
-            if(!(data is null))
-            {  
-                var content = await data.Result.Content.ReadAsStringAsync();
+            if(data.IsSuccessStatusCode)
+            {
+                var content = await data.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<TrendingsModel>(content);
             }
-
+            
             return null;
         }
     }

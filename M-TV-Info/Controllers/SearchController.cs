@@ -20,7 +20,7 @@ namespace M_TV_Info.Controllers
 
         // GET /search/keyword
         [HttpGet("search/{query}")]
-        public async Task<SearchModel> GetSearchResult(string? query)
+        public async Task<SearchModel> GetSearchResult(string query)
         {
             HttpClient http = new HttpClient();
 
