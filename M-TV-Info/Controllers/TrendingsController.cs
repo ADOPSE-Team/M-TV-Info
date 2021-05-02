@@ -9,21 +9,23 @@ using Newtonsoft.Json;
 
 namespace M_TV_Info.Controllers
 {
+    [Route("/trendings")]
     public class TrendingsController : Controller
     {
         
         // Return View
         // [HttpGet]
-        public async Task<IActionResult> Index(){
+        // public async Task<IActionResult> Index()
+        // {
             
-            var model = await GetTrendings("movie", "day");
+        //     var model = await GetTrendings("movie", "day");
 
-            return View(model);
-        }
+        //     return View(model);
+        // }
 
         // GET /trendings
-        // [HttpGet("trendings/{movie}&{week}")]
-        private async Task<TrendingsModel> GetTrendings(string type, string timeWindow)
+        [HttpGet("{type=movie}/{timeWindow=day}")]
+        public async Task<IActionResult> Index(string type, string timeWindow)
         {
             HttpClient http = new HttpClient();
 
@@ -35,13 +37,14 @@ namespace M_TV_Info.Controllers
             if(timeWindow is null) timeWindow = "day";
             
             
-            var data = await http.GetAsync("https://api.themoviedb.org/3/trending/" + type + "/" 
+            var data = await http.GetStringAsync("https://api.themoviedb.org/3/trending/" + type + "/" 
                                         + timeWindow + "?api_key=" + Constants.ApiKey);
             
-            if(data.IsSuccessStatusCode)
+            if(!(data is null))
             {
-                var content = await data.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<TrendingsModel>(content);
+                // var content = await data.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<TrendingsModel>(data);
+                return View(model);
             }
             
             return null;

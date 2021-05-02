@@ -1,10 +1,11 @@
-﻿using M_TV_Info.Models;
+﻿using API.Helpers;
+using M_TV_Info.Models;
+using M_TV_Info.Models.TMDbModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace M_TV_Info.Controllers
@@ -18,9 +19,25 @@ namespace M_TV_Info.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            HttpClient client = new HttpClient();
+
+            var TrendingMoviesData = await client.GetStringAsync("https://api.themoviedb.org/3/trending/movie/day?api_key=" + Constants.ApiKey);
+            var TrendingTVData = await client.GetStringAsync("https://api.themoviedb.org/3/trending/tv/day?api_key=" + Constants.ApiKey);
+            var UpcomingMoviesData = await client.GetStringAsync("https://api.themoviedb.org/3/movie/upcoming?api_key=" + Constants.ApiKey);
+
+            var TrendingMoviesContent = JsonConvert.DeserializeObject<TrendingsModel>(TrendingMoviesData);
+            var TrendingTVContent = JsonConvert.DeserializeObject<TrendingsModel>(TrendingTVData);
+            var UpcomingMoviesContent = JsonConvert.DeserializeObject<UpcomingModel>(UpcomingMoviesData);
+
+            HomeModel home = new HomeModel();
+
+            home.TrendingMovies = TrendingMoviesContent.results;
+            home.TrendingTvShows = TrendingTVContent.results;
+            home.UpcomingMovies = UpcomingMoviesContent.results;
+
+            return View(home);
         }
 
         public IActionResult Privacy()

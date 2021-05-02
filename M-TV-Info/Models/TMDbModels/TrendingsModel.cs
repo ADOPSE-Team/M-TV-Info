@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace M_TV_Info.Models.TMDbModels
@@ -29,5 +30,10 @@ namespace M_TV_Info.Models.TMDbModels
         public List<TrendingsResult> results { get; set; }
         public int total_pages { get; set; }
         public int total_results { get; set; }
+
+        public static implicit operator List<object>(TrendingsModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,8 +1,7 @@
-﻿@model M_TV_Info.Models.TMDbModels.TrendingsModel
-
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model M_TV_Info.Models.HomeModel;
 <link rel="stylesheet" href="~/css/site - Copy.css" />
 <div class="max-container">
     <img src="~/assets/HomeBanner.jpg" class="banner"/>
@@ -14,21 +13,12 @@
                 <span class="sr-only">Prev</span>
             </a>
             <div class="carousel-inner">
-                <!-- Trending Movies Carousel-->
+                @* Trending Movies *@
+                @foreach (var item in Model.TrendingMovies)
+                {
+                    <p>@item.title</p>
+                }
                 <div class="carousel-item active">
-                    <div id="col">
-                        @foreach (var movie in Model.results)
-                        {
-                            <p>@movie.title</p>
-                        }
-                        @* @foreach(var item in Model.results){
-                            <a asp-controller="Home" asp-action="MovieView">
-                                <img src="@item.poster_path" class="d-block w-100" alt="@item.title">
-                            </a>
-                        } *@
-                    </div>
-                </div>
-                @* <div class="carousel-item">
                     <div id="col">
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
@@ -37,7 +27,17 @@
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
                     </div>
-                </div> *@
+                </div>
+                <div class="carousel-item">
+                    <div id="col">
+                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                    </div>
+                </div>
             </div>
             <a class="carousel-control-next" href="#TrendingMovies" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -52,6 +52,7 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Prev</span>
             </a>
+            @* Trending Tv-Shows *@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div id="col">
@@ -88,6 +89,7 @@
                 <span class="sr-only">Prev</span>
             </a>
             <div class="carousel-inner">
+                @* Upcoming Movies *@
                 <div class="carousel-item active">
                     <div id="col">
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
@@ -123,6 +125,7 @@
                 <span class="sr-only">Prev</span>
             </a>
             <div class="carousel-inner">
+                @* Upcoming Tv-Shows *@
                 <div class="carousel-item active">
                     <div id="col">
                         <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
