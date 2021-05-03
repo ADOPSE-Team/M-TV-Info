@@ -13,29 +13,35 @@
                 <span class="sr-only">Prev</span>
             </a>
             <div class="carousel-inner">
-                @* Trending Movies *@
-                @foreach (var item in Model.TrendingMovies)
-                {
-                    <p>@item.title</p>
-                }
+
                 <div class="carousel-item active">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                        @* Trending Movies Active *@
+                        @foreach (var item in Model.TrendingMovies.Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        }
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                        @* Trending Movies *@
+                        @foreach (var item in Model.TrendingMovies.Skip(6).Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        }
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div id="col">
+                        @* Trending Movies *@
+                        @foreach (var item in Model.TrendingMovies.Skip(12).Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        }
                     </div>
                 </div>
             </div>
