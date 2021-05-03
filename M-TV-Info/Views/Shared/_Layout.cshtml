@@ -28,10 +28,13 @@
                         </li>
                         <li class="searchBoxLi">
                             <input type="search" placeholder="Enter text to search" class="searchBox">
-                            <a asp-controller="Home" asp-action="Favorites"><img src="~/assets/favoriteListButton.png" width="25" height="25" style="padding: 5px;" class='favB'></a>
-                            <a asp-controller="Home" asp-action="Watchlist"><img src="~/assets/watchlistButton.png" width="25" height="25" style="padding: 5px;" class='watchB'></a>
-                            <a asp-controller="Home" asp-action="Ratings"><img src="~/assets/editButton.png" width="25" height="25" style="padding: 5px;" class='rateB'></a>
-                        </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Home" asp-action="Favorites"><img src="~/assets/favoriteListButton.png" width="25" height="25" style="padding: 5px;" class='favB'></a>
+                                <a asp-controller="Home" asp-action="Watchlist"><img src="~/assets/watchlistButton.png" width="25" height="25" style="padding: 5px;" class='watchB'></a>
+                                <a asp-controller="Home" asp-action="Ratings"><img src="~/assets/editButton.png" width="25" height="25" style="padding: 5px;" class='rateB'></a>
+                            }
+                            </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

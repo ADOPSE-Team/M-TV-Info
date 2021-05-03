@@ -59,28 +59,38 @@
                 <span class="sr-only">Prev</span>
             </a>
             @* Trending Tv-Shows *@
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/2.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/3.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/4.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/5.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/6.jpg" class="d-block w-100" alt="..."></a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                    </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div id="col">
+                    @* Trending TV-Shows *@
+                    @foreach (var item in Model.TrendingTvShows.Take(6))
+                    {
+                        String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                    }
                 </div>
             </div>
+            <div class="carousel-item">
+                <div id="col">
+                    @* Trending TV-Shows *@
+                    @foreach (var item in Model.TrendingTvShows.Skip(6).Take(6))
+                    {
+                        String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                    }
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div id="col">
+                    @* Trending TV-Shows *@
+                    @foreach (var item in Model.TrendingTvShows.Skip(12).Take(6))
+                    {
+                        String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                    }
+                </div>
+            </div>
+        </div>
             <a class="carousel-control-next" href="#TrendingTv" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
@@ -98,62 +108,36 @@
                 @* Upcoming Movies *@
                 <div class="carousel-item active">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/2.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/3.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/4.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/5.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/6.jpg" class="d-block w-100" alt="..."></a>
+                        @* Upcoming Movies *@
+                        @foreach (var item in Model.UpcomingMovies.Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        }
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                        @* Upcoming Movies *@
+                        @foreach (var item in Model.UpcomingMovies.Skip(6).Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        }
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div id="col">
+                        @* Upcoming Movies *@
+                        @foreach (var item in Model.UpcomingMovies.Skip(12).Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        }
                     </div>
                 </div>
             </div>
             <a class="carousel-control-next" href="#UpcomingMovies" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-    <div class="items">
-        <h2 class="border-bottom">Upcoming Tv-Shows</h2>
-        <div id="UpcomingTv" class="carousel slide" data-ride="carousel" data-interval="false" style=" display: grid; grid-template-columns: 25px 200px 1fr 200px 25px; align-content: center;">
-            <a class="carousel-control-prev" href="#UpcomingTv" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Prev</span>
-            </a>
-            <div class="carousel-inner">
-                @* Upcoming Tv-Shows *@
-                <div class="carousel-item active">
-                    <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/2.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/3.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/4.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/5.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/6.jpg" class="d-block w-100" alt="..."></a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-next" href="#UpcomingTv" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
