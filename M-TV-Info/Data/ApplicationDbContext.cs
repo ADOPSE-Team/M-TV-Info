@@ -8,6 +8,10 @@ namespace M_TV_Info.Data
     //public class ApplicationDbContext : IdentityDbContext
     public class ApplicationDbContext : IdentityDbContext
     {
+        public ApplicationDbContext()
+        {
+            
+        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
