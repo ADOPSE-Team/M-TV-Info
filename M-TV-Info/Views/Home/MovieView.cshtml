@@ -10,8 +10,11 @@
         <div class="movieTop">
             <h1 class="movieTitle"> Movie Title</h1>
             <div class="add-buttons">
-               <img src="~/assets/addToFavoriteListButton.png" width="40" height="40" style="padding: 5px;" alt-="Add to your favorites">
-               <img src="~/assets/addToWatchlistButton.png" width="45" height="35" style="padding: 5px;" alt="Add toy your watchlist">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <img src="~/assets/addToFavoriteListButton.png" width="40" height="40" style="padding: 5px;" alt-="Add to your favorites">
+                    <img src="~/assets/addToWatchlistButton.png" width="45" height="35" style="padding: 5px;" alt="Add toy your watchlist">
+                }
             </div>
         </div>
         <div class="synopsis">

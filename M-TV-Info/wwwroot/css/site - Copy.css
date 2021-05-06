@@ -96,7 +96,8 @@ body {
     grid-gap: 10px;
 }
 .moviePoster{
-    grid-row:1 /  span 2;
+    width:auto;
+    height:100%;
 }
 .synopsis{
     width: 90%;
@@ -132,23 +133,23 @@ body {
 .movie-dets {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-around;
-    column-gap: 20px;
 }
 hr.line1 {
     border: 2px solid #242038;
     border-radius: 2px;
 }
 .movieTop {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-around;
-    border-bottom: 3px solid #242038;
-    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 6fr;
+    align-items: center;
 }
 h1.movieTitle {
-    margin-right: 415px;
+    grid-column: 1/span 2;
+}
+.add-buttons {
+    display: flex;
+    grid-column: 4;
+    justify-self: end;
 }
 #mycarousel{
     display:flex;
@@ -232,6 +233,10 @@ div.rating{
 .ratingButtons{
     display:flex;
     gap:10px;
+}
+.list-buttons{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 .buttons{
     display:flex;
