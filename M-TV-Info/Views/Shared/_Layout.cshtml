@@ -19,22 +19,26 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1" id="myUl">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <div class="buttons">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="searchBoxLi">
+                        <li class="nav-item" id="liSearch">
                             <input type="search" placeholder="Enter text to search" class="searchBox">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <a asp-controller="Home" asp-action="Favorites"><img src="~/assets/favoriteListButton.png" width="25" height="25" style="padding: 5px;" class='favB'></a>
-                                <a asp-controller="Home" asp-action="Watchlist"><img src="~/assets/watchlistButton.png" width="25" height="25" style="padding: 5px;" class='watchB'></a>
-                                <a asp-controller="Home" asp-action="Ratings"><img src="~/assets/editButton.png" width="25" height="25" style="padding: 5px;" class='rateB'></a>
-                            }
-                            </li>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item">
+                            <div class="buttons">
+                                <a asp-controller="Home" asp-action="Favorites" class="favA"><img src="~/assets/favoriteListButton.png" class="favB"></a>
+                                <a asp-controller="Home" asp-action="Watchlist" class="watchA"><img src="~/assets/watchlistButton.png" class='watchB'></a>
+                                <a asp-controller="Home" asp-action="Ratings" class="rateA"><img src="~/assets/editButton.png" class='rateB'></a>
+                            </div>
+                        </li>
+                         }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

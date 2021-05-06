@@ -83,38 +83,6 @@ body {
   background-color: #725ac1;
   color: #725ac1;
 }
-.searchBox{
-  width: 600px;
-  height: 30px;
-  border-radius:25px;
-  padding: .5rem 1rem;
-  grid-area: searchBox;
-}
-
-.searchBoxLi{
-  width: 600px;
-  height: 30px;
-  border-radius:25px;
-  padding: .5rem 1rem;
-  display: grid;
-  grid-template-areas: 'searchBox button1 button2 button 3';
-}
-
-.rateB {
-    grid-area: button3;
-    width: 40px;
-    height: 35px;
-}
-.watchB{
-  grid-area:button2;
-  width: 45px;
-  height: 35px;
-}
-.favB{
-  grid-area: button1;
-  width: 40px;
-  height: 35px;
-}
 .movieList {
     display: grid;
     grid-template-columns: 75px 3fr;
@@ -167,8 +135,6 @@ body {
     justify-content: space-between;
     align-content: space-around;
     column-gap: 20px;
-}
-.add-buttons {
 }
 hr.line1 {
     border: 2px solid #242038;
@@ -266,4 +232,48 @@ div.rating{
 .ratingButtons{
     display:flex;
     gap:10px;
+}
+.buttons{
+    display:flex;
+    flex-wrap:nowrap;
+}
+.searchBox {
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    padding: .5rem 1rem;
+    grid-area: searchBox;
+    flex-grow:2;
+}
+#myUl {
+    justify-content: space-between;
+    align-items: center;
+}
+.rateA {
+    display: grid;
+    justify-items: start;
+}
+.rateB {
+   width:40%;
+    height:auto;
+}
+.watchA {
+    display: grid;
+    justify-items: center;
+}
+.watchB {
+    width: 49%;
+    height: auto;
+    align-self:center;
+}
+.favA {
+    display: grid;
+    justify-items: end;
+}
+.favB {
+    width: 38%;
+    height: auto;
+}
+#liSearch {
+    flex-grow: 2;
 }
