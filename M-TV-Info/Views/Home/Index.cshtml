@@ -2,7 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 @model M_TV_Info.Models.HomeModel;
-<link rel="stylesheet" href="~/css/site - Copy.css" />
 <div class="max-container">
     <img src="~/assets/HomeBanner.jpg" class="banner"/>
     <div class="items">
@@ -20,7 +19,7 @@
                         @foreach (var item in Model.TrendingMovies.Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -30,7 +29,7 @@
                         @foreach (var item in Model.TrendingMovies.Skip(6).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -40,7 +39,7 @@
                         @foreach (var item in Model.TrendingMovies.Skip(12).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -66,7 +65,7 @@
                     @foreach (var item in Model.TrendingTvShows.Take(6))
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                     }
                 </div>
             </div>
@@ -76,7 +75,7 @@
                     @foreach (var item in Model.TrendingTvShows.Skip(6).Take(6))
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                     }
                 </div>
             </div>
@@ -86,7 +85,7 @@
                     @foreach (var item in Model.TrendingTvShows.Skip(12).Take(6))
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                     }
                 </div>
             </div>
@@ -112,7 +111,7 @@
                         @foreach (var item in Model.UpcomingMovies.Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -122,7 +121,7 @@
                         @foreach (var item in Model.UpcomingMovies.Skip(6).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -132,7 +131,7 @@
                         @foreach (var item in Model.UpcomingMovies.Skip(12).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="d-block w-100" alt="@item.title" style="width: 170px; min-width: 170px; max-width: 170px; height: 250px; min-height: 250px; max-height: 250px;"></a>
+                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
