@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace M_TV_Info.Data
 {
@@ -13,8 +14,8 @@ namespace M_TV_Info.Data
         {
         }
 
-        public DbSet<Models.User> Users { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<FavouriteModel> Favourite { get; set; }
         public DbSet<MediaModel> Media { get; set; }
         public DbSet<RatingModel> Rating { get; set; }
         public DbSet<WatchlistModel> Watchlist { get; set; }
