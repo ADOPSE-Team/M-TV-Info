@@ -72,11 +72,12 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    bottom:-245px;
 }
 
 .navbar{
@@ -112,6 +113,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    grid-row-gap:5%;
 }
 .banner{
     width: 100%;
@@ -312,4 +314,10 @@ div.rating{
 }
 #liSearch {
     flex-grow: 2;
+}
+
+body.bg1 {
+    background-image: url("../assets/bg2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
