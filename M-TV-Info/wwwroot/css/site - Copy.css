@@ -95,9 +95,13 @@ body {
     grid-auto-rows: minmax(auto, 100px);
     grid-gap: 10px;
 }
-.moviePoster{
-    width:auto;
-    height:100%;
+.addFav{
+    width:15%;
+    height:auto;
+}
+.addWatch {
+    width: 20%;
+    height: auto;
 }
 .synopsis{
     width: 90%;
@@ -109,48 +113,69 @@ body {
     flex-direction: column;
     column-gap: 5px;
 }
+
 #col {
     display: flex;
-    column-gap:10px;
+    column-gap: 10px;
 }
 .poster{
     justify-self:stretch;
     align-self:stretch;
 }
-.max-container{
-    display:flex;
-    flex-wrap:wrap;
-    gap:100px;
+.max-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 .banner{
     width: 100%;
     border-radius: 10px;
 }
-.movie-container {
-    display: flex;
-    grid-gap: 100px;
-}
-.movie-dets {
-    display: flex;
-    flex-wrap: wrap;
-}
+
 hr.line1 {
     border: 2px solid #242038;
     border-radius: 2px;
 }
+/*MovieView*/
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .movieTop {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 6fr;
     align-items: center;
 }
-h1.movieTitle {
+.movieTitle {
     grid-column: 1/span 2;
+}
+p.movieTitle {
+    font-size: 120%;
+}
+.movie-dets {
+    display: flex;
+    flex-wrap: wrap;
+}
+.btnPoster {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.moviePoster {
+    max-width: 96%;
+    height: auto;
+    grid-column: 1;
+    grid-row: 1 /span 3;
 }
 .add-buttons {
     display: flex;
-    grid-column: 4;
-    justify-self: end;
+    align-self: end;
+    grid-column: 1;
+    grid-row: 3;
+    margin-left: 25%;
+    gap: 4%;
 }
+/*Carousel*/
 #mycarousel{
     display:flex;
     justify-content:space-between;
@@ -176,7 +201,6 @@ h1.movieTitle {
 .carousel-control-prev{
     grid-column: 1/ span 2;
 }
-
 .carousel-control-next {
     grid-column: 4/ span 3;
 }
@@ -185,7 +209,6 @@ h1.movieTitle {
     width:75px;
     height:75px;
 }
-
 .carousel-control-next-icon {
     background-image: url("../assets/next.png");
     width: 75px;
@@ -195,6 +218,8 @@ h1.movieTitle {
     grid-column: 2/ span 3;
 
 }
+
+/*Lists*/
 .movieList{
     display:flex;
     flex-wrap:wrap;
@@ -216,7 +241,6 @@ div.watchlist{
     flex-wrap:wrap;
     gap:100px;
 }
-
 div.ratingList {
     display: flex;
     flex-wrap: wrap;
@@ -238,6 +262,7 @@ div.rating{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+/*Layout*/
 .buttons{
     display:flex;
     flex-wrap:nowrap;

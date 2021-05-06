@@ -1,21 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<link rel="stylesheet" href="~/css/site - Copy.css" />
-<div class="movie-container">
-    <img src="~/assets/1.jpg" class="moviePoster" /> 
+﻿<div class="movie-container">
+    <div class="btnPoster">
+        <img src="~/assets/1.jpg" class="moviePoster" />
+        <div class="add-buttons">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <img src="~/assets/addToFavoriteListButton.png" class="addFav" alt-="Add to your favorites">
+                <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add toy your watchlist">
+            }
+        </div>
+    </div>
     <div class="movie-dets">
         <div class="movieTop">
-            <h1 class="movieTitle"> Movie Title</h1>
-            <div class="add-buttons">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <img src="~/assets/addToFavoriteListButton.png" width="40" height="40" style="padding: 5px;" alt-="Add to your favorites">
-                    <img src="~/assets/addToWatchlistButton.png" width="45" height="35" style="padding: 5px;" alt="Add toy your watchlist">
-                }
-            </div>
+            <p class="movieTitle"> Movie Title</p>
         </div>
         <div class="synopsis">
             Synopsys: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
