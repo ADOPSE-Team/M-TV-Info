@@ -95,14 +95,6 @@ body {
     grid-auto-rows: minmax(auto, 100px);
     grid-gap: 10px;
 }
-.addFav{
-    width:15%;
-    height:auto;
-}
-.addWatch {
-    width: 20%;
-    height: auto;
-}
 .synopsis{
     width: 90%;
     margin-bottom: 20px;
@@ -172,8 +164,17 @@ p.movieTitle {
     align-self: end;
     grid-column: 1;
     grid-row: 3;
-    margin-left: 25%;
-    gap: 4%;
+    margin-left: 23%;
+    gap: 18%;
+}
+.addFav {
+    width: 22%;
+    height: auto;
+}
+
+.addWatch {
+    width: 28%;
+    height: auto;
 }
 /*Carousel*/
 #mycarousel{
