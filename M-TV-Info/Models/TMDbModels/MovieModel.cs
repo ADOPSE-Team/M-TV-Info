@@ -44,4 +44,9 @@ namespace M_TV_Info.Models.TMDbModels
         public double vote_average { get; set; }
         public int vote_count { get; set; }
     }
+
+    public class MovieView
+    {
+        public List<MovieModel> MovieModel { get; set; }
+    }
 }

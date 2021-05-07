@@ -12,6 +12,7 @@ namespace M_TV_Info.Controllers
 {
     public class HomeController : Controller
     {
+        HttpClient client = new HttpClient();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -21,8 +22,6 @@ namespace M_TV_Info.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            HttpClient client = new HttpClient();
-
             var TrendingMoviesData = await client.GetStringAsync("https://api.themoviedb.org/3/trending/movie/day?api_key=" + Constants.ApiKey);
             var TrendingTVData = await client.GetStringAsync("https://api.themoviedb.org/3/trending/tv/day?api_key=" + Constants.ApiKey);
             var UpcomingMoviesData = await client.GetStringAsync("https://api.themoviedb.org/3/movie/upcoming?api_key=" + Constants.ApiKey);
@@ -57,9 +56,12 @@ namespace M_TV_Info.Controllers
         {
             return View();
         }
-        public IActionResult MovieView()
+        public async Task<IActionResult> MovieView(int id)
         {
-            return View();
+            var data = await client.GetStringAsync("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + Constants.ApiKey);
+            var content = JsonConvert.DeserializeObject<MovieModel>(data);
+
+            return View(content);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
