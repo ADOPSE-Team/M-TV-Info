@@ -27,3 +27,7 @@ select {
 label {
     color: white;
 }
+
+.text-danger {
+    color: #ffaaaa !important;
+}
