@@ -1,4 +1,4 @@
-﻿@model M_TV_Info.Models.TMDbModels.MovieView;
+﻿@model M_TV_Info.Models.TMDbModels.MovieModel;
 <div class="movie-container">
     <div class="btnPoster">
         <img src="~/assets/1.jpg" class="moviePoster" />
@@ -10,11 +10,9 @@
             }
         </div>
     </div>
-    @foreach (var item in Model.MovieModel)
-    {
         <div class="movie-dets">
             <div class="movieTop">
-                <p class="movieTitle">@item.title</p>
+                <p class="movieTitle">@Model.title</p>
             </div>
             <div class="synopsis">
                 Synopsys: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -28,7 +26,6 @@
                 <p>Rating: Rating</p>
             </div>
         </div>
-    }
 </div>
 
 

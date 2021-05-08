@@ -20,7 +20,7 @@
                         @foreach (var item in Model.TrendingMovies.Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                            <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         @foreach (var item in Model.TrendingMovies.Skip(6).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                            <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         @foreach (var item in Model.TrendingMovies.Skip(12).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                            <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     @foreach (var item in Model.TrendingTvShows.Take(6))
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                        <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                     }
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     @foreach (var item in Model.TrendingTvShows.Skip(6).Take(6))
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                        <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                     }
                 </div>
             </div>
@@ -86,7 +86,7 @@
                     @foreach (var item in Model.TrendingTvShows.Skip(12).Take(6))
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                        <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                        <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                     }
                 </div>
             </div>
@@ -112,7 +112,7 @@
                         @foreach (var item in Model.UpcomingMovies.Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                            <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                         @foreach (var item in Model.UpcomingMovies.Skip(6).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                            <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                         @foreach (var item in Model.UpcomingMovies.Skip(12).Take(6))
                         {
                             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
-                            <a asp-controller="Home" asp-action="MovieView"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
+                            <a asp-controller="Home" asp-action="MovieView/@item.id"><img src=@path class="imagePosterCarousel" alt="@item.title"></a>
                         }
                     </div>
                 </div>
