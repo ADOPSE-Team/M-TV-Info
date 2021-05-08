@@ -19,13 +19,10 @@ namespace M_TV_Info.Controllers
         HttpClient client = new HttpClient();
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
 
         public HomeController(ILogger<HomeController> logger,
-            ApplicationDbContext context,
-            UserManager<User> userManager)
+            ApplicationDbContext context)
         {
-            _userManager = userManager;
             _context = context;
             _logger = logger;
         }
