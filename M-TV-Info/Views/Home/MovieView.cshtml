@@ -1,7 +1,8 @@
 ﻿@model M_TV_Info.Models.TMDbModels.MovieModel;
 <div class="movie-container">
     <div class="btnPoster">
-        <img src="~/assets/1.jpg" class="moviePoster" />
+        @{ String path = "https://image.tmdb.org/t/p/original" + Model.poster_path;}
+        <img src="@path" class="moviePoster" />
         <div class="add-buttons">
             @if (User.Identity.IsAuthenticated)
             {
