@@ -8,7 +8,9 @@
                     type: "POST", //HTTP POST Method  
                     url: "Home/AddToFavourites", // Controller/View   
                     data: { //Passing data  
-                        media_id: $('#movie_id').val()
+                        media_id: $('#movie_id').val(),
+                        movie_title: $('#movie_title').val(),
+                        movie_poster: $('#poster_path').val()
                     },
                     success:function(data){
                         var Movie = $('#movie_title').val();
@@ -30,7 +32,7 @@
                     {
                         <img src="~/assets/addToFavoriteListButton.png" id="addFav" class="addFav" alt-="Add to your favorites">
                         <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add toy your watchlist">
-                        <input type="hidden" id="user_id">
+                        @* <input type="hidden" id="user_id"> *@
                         <input type="hidden" id="poster_path" value=@path/>
                         <input type="hidden" id="movie_id" value=@Model.id/>
                         <input type="hidden" id="movie_title" value=@Model.title/>
