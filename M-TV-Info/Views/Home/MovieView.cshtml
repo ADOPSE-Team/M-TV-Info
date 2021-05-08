@@ -1,31 +1,38 @@
 ﻿@model M_TV_Info.Models.TMDbModels.MovieModel;
-<div class="movie-container">
-    <div class="btnPoster">
-        <img src="~/assets/1.jpg" class="moviePoster" />
-        <div class="add-buttons">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <img src="~/assets/addToFavoriteListButton.png" class="addFav" alt-="Add to your favorites">
-                <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add toy your watchlist">
-            }
+    <body>
+        <div class="movie-container">
+            <div class="btnPoster">
+                @{
+                    String path = "https://image.tmdb.org/t/p/original" + @Model.poster_path;
+                }
+                <img src=@path class="moviePoster" />
+                <div class="add-buttons">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <img src="~/assets/addToFavoriteListButton.png" class="addFav" alt-="Add to your favorites">
+                        <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add toy your watchlist">
+                    }
+                </div>
+            </div>
+            <div class="movie-dets">
+                <div class="movieTop">
+                    <p class="movieTitle">@Model.title</p>
+                </div>
+                <div class="synopsis">
+                    @Model.overview
+                </div>
+                <div class="movieInfo">
+                    <p>Release Date: @Model.release_date</p>
+                    <p>Runtime: @Model.runtime</p>
+                    <p>Production Companies: @Model.production_companies</p>
+                    <p>
+                        Genres:
+                        @foreach (var item in Model.genres)
+                        {
+                            @item.name <span>&nbsp;</span>
+                        }
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-        <div class="movie-dets">
-            <div class="movieTop">
-                <p class="movieTitle">@Model.title</p>
-            </div>
-            <div class="synopsis">
-                @Model.overview
-            </div>
-            <div class="movieInfo">
-                <p>Director: Director Name</p>
-                <p>Main Cast: Name1, Name2, Name3, ...</p>
-                <p>Writer: Writer Name</p>
-                <p>Studio: Sudio Name</p>
-                <p>Genre: Genre1, Genre2, ...</p>
-                <p>Rating: Rating</p>
-            </div>
-        </div>
-</div>
-
-
+    </body>

@@ -150,7 +150,7 @@ p.movieTitle {
     grid-template-rows: 1fr 1fr 1fr;
 }
 .moviePoster {
-    max-width: 96%;
+    max-width: 39%;
     height: auto;
     grid-column: 1;
     grid-row: 1 /span 3;
@@ -160,16 +160,16 @@ p.movieTitle {
     align-self: end;
     grid-column: 1;
     grid-row: 3;
-    margin-left: 23%;
-    gap: 18%;
+    margin-left: 5%;
+    gap: 15%;
 }
 .addFav {
-    width: 22%;
+    width: 7%;
     height: auto;
 }
 
 .addWatch {
-    width: 28%;
+    width: 10%;
     height: auto;
 }
 /*Carousel*/
