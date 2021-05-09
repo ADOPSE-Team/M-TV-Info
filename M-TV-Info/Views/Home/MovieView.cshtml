@@ -2,29 +2,7 @@
     @* Insert Data Using AJAX to Favorites / WatchList / Ratings  *@
     @section Scripts{   
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
-        <script>
-            //$(document).ready( function() { 
-                $('#addFav').click( function() {
-                    var media_id = $('#movie_id');
-                    var movie_title = $('#movie_title');
-                    var movie_poster = $('#poster_path');
-                    var _item = new Object();
-                    _item.media_id = media_id.val();
-                    _item.movie_title = movie_title.val();
-                    _item.movie_poster = movie_poster.val();
-                    $.ajax({
-                        type: "POST", //HTTP POST Method  
-                        url: "/api/AjaxAPI/AddToFavourites", // Controller/View
-                        dataType: "json",
-                        data: _item,
-                        //contentType: "application/json; charset=utf-8",
-                        success: function () {
-                            alert("Succesfully Added");
-                        }
-                    });
-                });
-            //});
-        </script>
+        <script src="~/js/favorites.js"></script>
     }
     <body>
         <div class="movie-container">

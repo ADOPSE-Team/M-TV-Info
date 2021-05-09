@@ -1,16 +1,20 @@
-﻿$(document).ready(function () {
-    $('#addFav').click(function () {
+﻿$(document).ready( function() { 
+    $('#addFav').click( function() {
+        var media_id = $('#movie_id');
+        var movie_title = $('#movie_title');
+        var movie_poster = $('#poster_path');
+        var _item = new Object();
+        _item.media_id = media_id.val();
+        _item.movie_title = movie_title.val();
+        _item.movie_poster = movie_poster.val();
         $.ajax({
-            type: "POST", //HTTP POST Method
-            url: "Home/AddToFavourites", // Controller/View
-            data: { //Passing data
-                media_id: $('#movie_id').val(),
-                movie_title: $('#movie_title').val(),
-                movie_poster: $('#poster_path').val()
-            },
-            success: function (data) {
-                var Movie = $('#movie_title').val();
-                alert("Movie" + Movie + "has been added to favourites list");
+            type: "POST", //HTTP POST Method  
+            url: "/api/AjaxAPI/AddToFavourites", // Controller/View
+            dataType: "json",
+            data: _item,
+            //contentType: "application/json; charset=utf-8",
+            success: function () {
+                alert("Succesfully Added");
             }
         });
     });
