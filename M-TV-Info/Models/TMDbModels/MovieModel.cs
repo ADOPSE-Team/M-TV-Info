@@ -15,6 +15,12 @@ namespace M_TV_Info.Models.TMDbModels
         public string iso_639_1 { get; set; }
         public string name { get; set; }
     }
+    
+    public class ProductionCompany
+    {
+        public string name { get; set; }
+
+    }
 
     public class MovieModel
     {
@@ -31,7 +37,7 @@ namespace M_TV_Info.Models.TMDbModels
         public string overview { get; set; }
         public double popularity { get; set; }
         public string poster_path { get; set; }
-        public List<object> production_companies { get; set; }
+        public List<ProductionCompany> production_companies { get; set; }
         public List<object> production_countries { get; set; }
         public string release_date { get; set; }
         public int revenue { get; set; }

@@ -70,7 +70,9 @@ body {
     background-color: #f8f0fb;
     color: #242038;
     font-family: 'Ubuntu', sans-serif;
+    position: relative
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -90,17 +92,6 @@ body {
     grid-auto-rows: minmax(auto, 100px);
     grid-gap: 10px;
 }
-.synopsis{
-    width: 90%;
-    margin-bottom: 20px;
-}
-.movieInfo {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    column-gap: 5px;
-}
-
 #col {
     display: flex;
     column-gap: 10px;
@@ -125,9 +116,19 @@ hr.line1 {
     border-radius: 2px;
 }
 /*MovieView*/
-.movie-container {
+body.movieView {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #f8f0fb;
+    color: #f8f0fb;
+    font-family: 'Ubuntu', sans-serif;
+    position: relative
+}
+#movie-container {
     display: flex;
     flex-wrap: wrap;
+    background: #242038;
+    padding: 50px;
 }
 
 .movieTop {
@@ -139,11 +140,25 @@ hr.line1 {
     grid-column: 1/span 2;
 }
 p.movieTitle {
-    font-size: 120%;
+    font-size: 200%;
+}
+.synopsis {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.movieInfo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    column-gap: 5px;
+    border-top: 2px solid #f8f0fb;
+    border-radius: 2px;
 }
 .movie-dets {
     display: flex;
     flex-wrap: wrap;
+    font-size: 118%;
 }
 .btnPoster {
     display: grid;
@@ -154,14 +169,15 @@ p.movieTitle {
     height: auto;
     grid-column: 1;
     grid-row: 1 /span 3;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .add-buttons {
     display: flex;
     align-self: end;
     grid-column: 1;
     grid-row: 3;
-    margin-left: 5%;
-    gap: 15%;
+    margin-left: 3%;
+    gap: 4%;
 }
 .addFav {
     width: 7%;
@@ -172,6 +188,47 @@ p.movieTitle {
     width: 10%;
     height: auto;
 }
+.addRev {
+    width: 7%;
+    height: auto;
+}
+
+.gradient-border {
+    --borderWidth: 10px;
+    background: #725AC1;
+    position: relative;
+    border-radius: var(--borderWidth);
+}
+
+    .gradient-border:after {
+        content: '';
+        position: absolute;
+        top: calc(-1 * var(--borderWidth));
+        left: calc(-1 * var(--borderWidth));
+        height: calc(100% + var(--borderWidth) * 2);
+        width: calc(100% + var(--borderWidth) * 2);
+        background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        border-radius: calc(2 * var(--borderWidth));
+        z-index: -1;
+        animation: animatedgradient 3s ease alternate infinite;
+        background-size: 300% 300%;
+    }
+
+
+@keyframes animatedgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 /*Carousel*/
 #mycarousel{
     display:flex;
@@ -316,8 +373,25 @@ div.rating{
     flex-grow: 2;
 }
 
-body.bg1 {
+.bg1 {
     background-image: url("../assets/bg2.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.movieView::before {
+    content: "";
+    background: var(--url) no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 30%;
+    filter: sepia(100%) hue-rotate(198deg);
+}
+* {
+    position: relative;
 }
