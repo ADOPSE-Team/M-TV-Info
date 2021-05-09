@@ -28,7 +28,7 @@ namespace M_TV_Info.Controllers
             _logger = logger;
         }
 
-
+        
         // Index View
         public async Task<IActionResult> IndexAsync()
         {

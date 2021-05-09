@@ -14,8 +14,7 @@ namespace M_TV_Info.Controllers
     public class FavouritesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        // private readonly UserManager<User> _userManager;
-
+        // Def Constructor
         public FavouritesController(ApplicationDbContext context)
         {
             // _userManager = userManager;
@@ -32,11 +31,6 @@ namespace M_TV_Info.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = User.FindFirstValue(ClaimTypes.Name);
 
-            // var data = JsonConvert.DeserializeObject<FavouriteModelPost>(item.ToString());
-
-            // User applicationUser = await _userManager.GetUserAsync(User);
-            // string userEmail = applicationUser?.Email; // will give the user's Email
-
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
 
@@ -50,6 +44,9 @@ namespace M_TV_Info.Controllers
             _context.SaveChanges();
         }
 
+        // Remove From Favourites
+        [Route("api/AjaxAPI/RemoveFromFavourites")]
+        [HttpPost]
         public void delete(FavouriteModel item)
         {
             using (var context = new ApplicationDbContext())
@@ -57,8 +54,6 @@ namespace M_TV_Info.Controllers
                 context.Favourite.Remove(item);
                 context.SaveChanges();
             }
-        }
-        
-        // private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        }        
     }
 }
