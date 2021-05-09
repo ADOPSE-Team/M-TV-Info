@@ -25,7 +25,7 @@ namespace M_TV_Info.Controllers
         // Add To Favourites
         [Route("api/AjaxAPI/AddToFavourites")]
         [HttpPost]
-        public void AddToFavourites(FavouriteModelPost item)
+        public ActionResult AddToFavourites(FavouriteModelPost item)
         {
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -42,6 +42,8 @@ namespace M_TV_Info.Controllers
 
             _context.Favourite.Add(model);
             _context.SaveChanges();
+
+            return Ok(model);
         }
 
         // Remove From Favourites

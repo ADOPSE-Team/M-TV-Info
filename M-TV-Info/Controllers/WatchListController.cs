@@ -22,7 +22,7 @@ namespace M_TV_Info.Controllers
         // Add To Favourites
         [Route("api/AjaxAPI/AddToWatchList")]
         [HttpPost]
-        public void AddToWatchList(WatchListModelPost item)
+        public ActionResult AddToWatchList(WatchListModelPost item)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = User.FindFirstValue(ClaimTypes.Name);
@@ -38,6 +38,8 @@ namespace M_TV_Info.Controllers
 
             _context.Watchlist.Add(model);
             _context.SaveChanges();
+
+            return Ok(model);
         }
 
         public void update(WatchlistModel item)

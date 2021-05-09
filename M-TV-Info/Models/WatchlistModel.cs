@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace M_TV_Info.Models
@@ -20,4 +21,9 @@ namespace M_TV_Info.Models
         public string poster_path { get; set; }
         public string movie_title { get; set; }
     }
+
+    public class WatchListModelView
+    {
+        public List<WatchlistModel> WatchlistModel { get; set; }
+    }   
 }

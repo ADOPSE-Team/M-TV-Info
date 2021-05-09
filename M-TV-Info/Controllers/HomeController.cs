@@ -57,7 +57,9 @@ namespace M_TV_Info.Controllers
 
             var currentUserWatchList = _context.Watchlist.Where(i => i.user_id == userId).ToList();
 
-            return View(currentUserWatchList);
+            WatchListModelView model = new WatchListModelView();
+
+            return View(model);
         }
         public IActionResult Ratings()
         {
