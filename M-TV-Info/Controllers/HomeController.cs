@@ -21,17 +21,6 @@ namespace M_TV_Info.Controllers
         HttpClient client = new HttpClient();
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-        // private readonly UserManager<User> _userManager;
-
-        // public HomeController(ILogger<HomeController> logger,
-        //     ApplicationDbContext context,
-        //     UserManager<User> userManager)
-        // {
-        //     _userManager = userManager;
-        //     _context = context;
-        //     _logger = logger;
-        // }
-
         public HomeController(ILogger<HomeController> logger,
             ApplicationDbContext context)
         {
@@ -78,14 +67,13 @@ namespace M_TV_Info.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = User.FindFirstValue(ClaimTypes.Name);
-            // User applicationUser = await _userManager.GetUserAsync(User);
-            // string userEmail = applicationUser?.Email; // will give the user's Email
 
             var currentUserFavourites = _context.Favourite.Where(i => i.user_id == userId).ToList();
 
             return View(currentUserFavourites);
         }
 
+        // Movie View Page
         public async Task<IActionResult> MovieView(int id)
         {
             var data = await client.GetStringAsync("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + Constants.ApiKey);
