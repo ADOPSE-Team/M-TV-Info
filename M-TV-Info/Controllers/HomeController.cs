@@ -77,36 +77,7 @@ namespace M_TV_Info.Controllers
         {
             return View();
         }
-
-        // Add To Favorites
-        [HttpPost]
-        public async Task<IActionResult> AddToFavourites(Object obj)
-        {
-            var media = JsonConvert.DeserializeObject<FavouriteModelPost>(obj.ToString());
-
-            FavouriteModel fav = new FavouriteModel();
-            // User usr = await GetCurrentUserAsync();
-            DateTime date = DateTime.Now;
-
-            fav.media_id = media.media_id;
-            fav.user_id = "1";
-            fav.w_date = date;
-
-            if (!(fav is null))
-            {
-                _context.Favourite.Add(fav);
-                _context.SaveChanges();
-                return Ok();
-            }
-            else
-            {
-                throw new ArgumentNullException(nameof(fav));
-            }
-        }
-
-        // Get Current USER
-        // private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
