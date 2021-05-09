@@ -145,6 +145,7 @@ p.movieTitle {
 .synopsis {
     width: 90%;
     margin-bottom: 20px;
+    border-bottom: 2px solid #f8f0fb;
 }
 
 .movieInfo {
