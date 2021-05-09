@@ -3,11 +3,20 @@ using M_TV_Info.Models;
 using M_TV_Info.Data;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace M_TV_Info.Controllers
 {
     public class FavouritesController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public FavouritesController(ApplicationDbContext context)
+        {
+            _context = context;
+
+        }
+
         public List<FavouriteModel> get()
         {
             var list = new List<FavouriteModel>();
@@ -19,13 +28,20 @@ namespace M_TV_Info.Controllers
             return list;
         }
 
-        public void insert(FavouriteModel item)
+        // Add To Favourites
+        [Route("api/AjaxAPI/AddToFavourites")]
+        [HttpPost]
+        public void AddToFavourites(FavouriteModelPost item)
         {
-            using (var context = new ApplicationDbContext())
-            {
-                context.Favourite.Add(item);
-                context.SaveChanges();
-            }
+            FavouriteModel model = new FavouriteModel();
+            DateTime date = DateTime.Now;
+            
+            model.media_id = item.media_id;
+            model.user_id = "1";
+            model.w_date = date;
+
+            _context.Favourite.Add(model);
+            _context.SaveChanges();
         }
 
         public void update(FavouriteModel item)
