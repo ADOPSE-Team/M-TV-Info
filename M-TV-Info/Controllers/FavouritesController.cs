@@ -13,12 +13,11 @@ namespace M_TV_Info.Controllers
     public class FavouritesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
+        // private readonly UserManager<User> _userManager;
 
-        public FavouritesController(ApplicationDbContext context, 
-            UserManager<User> userManager)
+        public FavouritesController(ApplicationDbContext context)
         {
-            _userManager = userManager;
+            // _userManager = userManager;
             _context = context;
 
         }
@@ -26,14 +25,14 @@ namespace M_TV_Info.Controllers
         // Add To Favourites
         [Route("api/AjaxAPI/AddToFavourites")]
         [HttpPost]
-        public async Task AddToFavouritesAsync(FavouriteModelPost item)
+        public void AddToFavourites(FavouriteModelPost item)
         {
 
-            var userId =  User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userName =  User.FindFirstValue(ClaimTypes.Name);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = User.FindFirstValue(ClaimTypes.Name);
 
-            User applicationUser = await _userManager.GetUserAsync(User);
-            string userEmail = applicationUser?.Email; // will give the user's Email
+            // User applicationUser = await _userManager.GetUserAsync(User);
+            // string userEmail = applicationUser?.Email; // will give the user's Email
 
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
@@ -57,6 +56,6 @@ namespace M_TV_Info.Controllers
             }
         }
         
-        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        // private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

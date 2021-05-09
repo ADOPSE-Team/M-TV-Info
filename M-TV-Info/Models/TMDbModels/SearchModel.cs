@@ -29,4 +29,9 @@ namespace M_TV_Info.Models.TMDbModels
         public int total_results { get; set; }
     }
 
+    public class AutocompleteSearch
+    {
+        public string title {get; set; }
+    }
+
 }
