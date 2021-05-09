@@ -28,7 +28,7 @@ namespace M_TV_Info.Controllers
             _logger = logger;
         }
 
-        
+
         // Index View
         public async Task<IActionResult> IndexAsync()
         {
@@ -53,9 +53,15 @@ namespace M_TV_Info.Controllers
             return View();
         }
 
+        // WatchList Page
         public IActionResult Watchlist()
         {
-            return View();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = User.FindFirstValue(ClaimTypes.Name);
+
+            var currentUserWatchList = _context.Watchlist.Where(i => i.user_id == userId).ToList();
+
+            return View(currentUserWatchList);
         }
         public IActionResult Ratings()
         {

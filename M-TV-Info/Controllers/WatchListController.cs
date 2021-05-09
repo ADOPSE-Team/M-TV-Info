@@ -3,29 +3,41 @@ using M_TV_Info.Models;
 using M_TV_Info.Data;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using System;
 
 namespace M_TV_Info.Controllers
 {
     public class WatchListController : Controller
     {
-        public List<WatchlistModel> get()
-        {
-            var list = new List<WatchlistModel>();
-            using (var context = new ApplicationDbContext())
-            {
-                list = context.Watchlist.ToList();
-            }
+        private readonly ApplicationDbContext _context;
 
-            return list;
+        // Def Constructor
+        public WatchListController(ApplicationDbContext context)
+        {
+            _context = context;
+
         }
 
-        public void insert(WatchlistModel item)
+        // Add To Favourites
+        [Route("api/AjaxAPI/AddToWatchList")]
+        [HttpPost]
+        public void AddToWatchList(WatchListModelPost item)
         {
-            using (var context = new ApplicationDbContext())
-            {
-                context.Watchlist.Add(item);
-                context.SaveChanges();
-            }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = User.FindFirstValue(ClaimTypes.Name);
+
+            WatchlistModel model = new WatchlistModel();
+            DateTime date = DateTime.Now;
+
+            model.media_id = item.media_id;
+            model.movie_title = item.movie_title;
+            model.poster_path = item.poster_path;
+            model.user_id = userId;
+            model.w_date = date;
+
+            _context.Watchlist.Add(model);
+            _context.SaveChanges();
         }
 
         public void update(WatchlistModel item)

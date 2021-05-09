@@ -3,6 +3,7 @@
     @section Scripts{   
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
         <script src="~/js/favorites.js"></script>
+        <script src="~/js/watchlist.js"></script>
     }
     <body>
         <div class="movie-container">
@@ -18,7 +19,7 @@
                         <input type="hidden" id="movie_id" value="@Model.id">
                         <input type="hidden" id="movie_title" value="@Model.title">
                         <img src="~/assets/addToFavoriteListButton.png" id="addFav" class="addFav" alt-="Add to your favorites">
-                        <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add toy your watchlist">
+                        <img src="~/assets/addToWatchlistButton.png" id="addWatch" class="addWatch" alt="Add toy your watchlist">
                     @* } *@
                 </div>
             </div>
