@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace M_TV_Info.Models
@@ -19,5 +20,10 @@ namespace M_TV_Info.Models
         public int media_id { get; set; }
         public string movie_title { get; set; }
         public string movie_poster { get; set; }
+    }
+
+    public class FavouritesModelView
+    {
+        public List<FavouriteModel> FavouriteModel { get; set; }
     }
 }

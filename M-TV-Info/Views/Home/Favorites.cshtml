@@ -1,9 +1,14 @@
-﻿@model M_TV_Info.Models.FavouriteModel;
-<div class="favorites">
+﻿@model M_TV_Info.Models.FavouritesModelView;
 
+<div class="favorites">
     <h1 class="border-bottom">My Favorites</h1>
     <div class="items">
         <h2>Recent Entries</h2>
+
+        @foreach(var item in Model.FavouriteModel)
+        {
+            <p>@item.movie_title</p>
+        }
         <div id="RecentFavorites" class="carousel slide" data-ride="carousel" data-interval="false" style=" display: grid; grid-template-columns: 25px 200px 1fr 200px 25px; align-content: center;">
             <a class="carousel-control-prev" href="#TrendingTv" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

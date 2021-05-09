@@ -2,12 +2,9 @@
 using M_TV_Info.Data;
 using M_TV_Info.Models;
 using M_TV_Info.Models.TMDbModels;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -76,7 +73,11 @@ namespace M_TV_Info.Controllers
 
             var currentUserFavourites = _context.Favourite.Where(i => i.user_id == userId).ToList();
 
-            return View(currentUserFavourites);
+            FavouritesModelView model = new FavouritesModelView();
+
+            model.FavouriteModel = currentUserFavourites;
+
+            return View(model);
         }
 
         // Movie View Page
