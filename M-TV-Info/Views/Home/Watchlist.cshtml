@@ -1,7 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model M_TV_Info.Models.WatchListModelView;
+﻿@model M_TV_Info.Models.WatchListModelView;
 <link rel="stylesheet" href="~/css/site - Copy.css" />
 <div class="watchlist">
     
@@ -16,22 +13,20 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/2.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/3.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/4.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/5.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/6.jpg" class="d-block w-100" alt="..."></a>
+                        @foreach (var item in Model.WatchlistModel.Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id><img src=@path class="imagePosterCarousel" alt="@item.movie_title"></a>
+                        }
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div id="col">
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                        <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                        @foreach (var item in Model.WatchlistModel.Skip(6).Take(6))
+                        {
+                            String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                            <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id><img src=@path class="imagePosterCarousel" alt="@item.movie_title"></a>
+                        }
                     </div>
                 </div>
             </div>
@@ -44,34 +39,14 @@
     <div>
         <h2 id="border-bottom">Full list</h2>
         <div class="movieList">
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-            <div class="movieEntry">
-                <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-            </div>
-
+            @foreach (var item in Model.WatchlistModel)
+            {
+                String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
+                <div class="movieEntry">
+                    <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id class="alist"><img src=@path alt="@item.movie_title" class="listMoviePoster"></a>
+                    <h3 style="align-self: center;margin-left: 5px; color:#242038">@item.movie_title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
+                </div>
+            }
         </div>
     </div>
 </div>
