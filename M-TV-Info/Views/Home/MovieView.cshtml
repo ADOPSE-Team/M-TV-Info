@@ -1,10 +1,28 @@
 ﻿@model M_TV_Info.Models.TMDbModels.MovieModel;
 @* Insert Data Using AJAX to Favorites / WatchList / Ratings  *@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function () {
+            $('#addFav').click(function () {
+                $.ajax({
+                    type: "POST", //HTTP POST Method
+                    url: "Home/AddToFavourites", // Controller/View
+                    data: { //Passing data
+                        media_id: $('#movie_id').val(),
+                        movie_title: $('#movie_title').val(),
+                        movie_poster: $('#poster_path').val()
+                    },
+                    success: function (data) {
+                        var Movie = $('#movie_title').val();
+                        alert("Movie" + Movie + "has been added to favourites list");
+                    }
+                });
+            });
+        });
+</script>
 @{
     String backDropPath = "https://image.tmdb.org/t/p/original" + @Model.backdrop_path;
 }
-<script src="~/js/favorites.js"></script>
 <body class="movieView" style="--url:url(@backDropPath)">
     <div>
         <div id="movie-container" class="gradient-border">
@@ -14,15 +32,15 @@
                 }
                 <img src=@path class="moviePoster" />
                 <div class="add-buttons">
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                    @* @if (User.Identity.IsAuthenticated)
+                    { *@
                         <input type="hidden" id="poster_path" value="@path">
                         <input type="hidden" id="movie_id" value="@Model.id">
                         <input type="hidden" id="movie_title" value="@Model.title">
                         <img src="~/assets/addToFavoriteListButton.png" id="addFav" class="addFav" alt-="Add to your favorites">
                         <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add to your watchlist">
                         <img src="~/assets/addReviewButton.png" class="addRev" alt="Add to your watchlist">
-                    }
+                    @* } *@
                 </div>
             </div>
             <div class="movie-dets">
