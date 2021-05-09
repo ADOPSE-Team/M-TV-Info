@@ -9,7 +9,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace M_TV_Info.Controllers
@@ -19,10 +21,13 @@ namespace M_TV_Info.Controllers
         HttpClient client = new HttpClient();
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
         public HomeController(ILogger<HomeController> logger,
-            ApplicationDbContext context)
+            ApplicationDbContext context,
+            UserManager<User> userManager)
         {
+            _userManager = userManager;
             _context = context;
             _logger = logger;
         }
@@ -59,10 +64,20 @@ namespace M_TV_Info.Controllers
         {
             return View();
         }
-        public IActionResult Favorites()
+
+        // Favorites Page
+        public async Task<IActionResult> Favorites()
         {
-            return View();
+            var userId =  User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName =  User.FindFirstValue(ClaimTypes.Name);
+            User applicationUser = await _userManager.GetUserAsync(User);
+            string userEmail = applicationUser?.Email; // will give the user's Email
+
+            var currentUserFavourites = _context.Favourite.Where(i => i.user_id == userId).ToList();
+            
+            return View(currentUserFavourites);
         }
+
         public async Task<IActionResult> MovieView(int id)
         {
             var data = await client.GetStringAsync("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + Constants.ApiKey);
@@ -77,7 +92,7 @@ namespace M_TV_Info.Controllers
         {
             return View();
         }
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
