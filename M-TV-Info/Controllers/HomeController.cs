@@ -57,7 +57,6 @@ namespace M_TV_Info.Controllers
         public IActionResult Watchlist()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userName = User.FindFirstValue(ClaimTypes.Name);
 
             var currentUserWatchList = _context.Watchlist.Where(i => i.user_id == userId).ToList();
 
@@ -72,7 +71,6 @@ namespace M_TV_Info.Controllers
         public IActionResult Favorites()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userName = User.FindFirstValue(ClaimTypes.Name);
 
             var currentUserFavourites = _context.Favourite.Where(i => i.user_id == userId).ToList();
 
