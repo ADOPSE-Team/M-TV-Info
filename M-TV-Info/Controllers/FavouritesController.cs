@@ -7,6 +7,7 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace M_TV_Info.Controllers
 {
@@ -30,6 +31,8 @@ namespace M_TV_Info.Controllers
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = User.FindFirstValue(ClaimTypes.Name);
+
+            // var data = JsonConvert.DeserializeObject<FavouriteModelPost>(item.ToString());
 
             // User applicationUser = await _userManager.GetUserAsync(User);
             // string userEmail = applicationUser?.Email; // will give the user's Email
