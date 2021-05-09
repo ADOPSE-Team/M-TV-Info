@@ -29,14 +29,14 @@
                 }
                 <img src=@path class="moviePoster" />
                 <div class="add-buttons">
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                    @* @if (User.Identity.IsAuthenticated)
+                    { *@
                         <input type="hidden" id="poster_path" value="@path">
                         <input type="hidden" id="movie_id" value="@Model.id">
                         <input type="hidden" id="movie_title" value="@Model.title">
                         <img src="~/assets/addToFavoriteListButton.png" id="addFav" class="addFav" alt-="Add to your favorites">
                         <img src="~/assets/addToWatchlistButton.png" class="addWatch" alt="Add toy your watchlist">
-                    }
+                    @* } *@
                 </div>
             </div>
             <div class="movie-dets">
