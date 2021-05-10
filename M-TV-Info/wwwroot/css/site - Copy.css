@@ -302,9 +302,21 @@ p.movieTitle {
     flex-direction: row;
     grid-gap: 10px;
 }
+.ratingList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    grid-gap: 10px;
+    color: #242038;
+}
 .movieEntry {
     display: grid;
     grid-template-columns: 1fr 8fr 2fr;
+    background-color: #cec6e8;
+}
+.ratingEntry {
+    display: grid;
+    grid-template-columns: 1fr 8fr 3fr 1fr;
     background-color: #cec6e8;
 }
 .deleteButton {
@@ -322,16 +334,23 @@ p.movieTitle {
     display:grid;
     background-color: #b0a6d0;
 }
-div.watchlist{
-    display:flex;
-    flex-wrap:wrap;
-    gap:100px;
-
-}
-div.ratingList {
+div.watchlist {
     display: flex;
     flex-wrap: wrap;
     gap: 100px;
+    background-color: rgb(36, 32, 56);
+    padding: 50px;
+    border-radius: 3px;
+    color: rgb(248, 240, 251);
+}
+div.ratingsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    background-color: rgb(36, 32, 56);
+    padding: 50px;
+    border-radius: 3px;
+    color: rgb(248, 240, 251);
 }
 div.favorites {
     display: flex;
@@ -342,12 +361,14 @@ div.favorites {
     border-radius: 3px;
     color: rgb(248, 240, 251);
 }
-div.rating{
-    display:flex;
+div.rating {
+    display: flex;
+    align-items: center;
 }
-.ratingButtons{
-    display:flex;
-    gap:10px;
+.ratingButtons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 .list-buttons{
     display:grid;
