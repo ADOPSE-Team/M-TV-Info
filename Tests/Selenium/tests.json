@@ -1,0 +1,56 @@
+{
+    "login": {
+        "test1": {
+            "username":"test1@test.com",
+            "password":"Password1@3",
+            "result":"True"
+        },
+        "test2": {
+            "username":"test2@test.com",
+            "password":"Password1@3",
+            "result":"True"
+        },
+        "test3": {
+            "username":"test3@test.com",
+            "password":"Password1@3",
+            "result":"True"
+        },
+        "test4": {
+            "username":"failed@test.com",
+            "password":"Password1@3",
+            "result":"False"
+        }
+    },
+    "register": {
+        "test1": {
+            "username":"Test41",
+            "name":"test41",
+            "email":"test41@test.com",
+            "password":"Password1@3",
+            "confirm_password":"Password1@3",
+            "birthday":"01012000",
+            "country":"Greece",
+            "result":"True"
+        },
+        "test2": {
+            "username":"Test42",
+            "name":"test42",
+            "email":"test42@test.com",
+            "password":"Password1@3",
+            "confirm_password":"Password1@3",
+            "birthday":"01012000",
+            "country":"Greece",
+            "result":"True"
+        },
+        "test3": {
+            "username":"Test43",
+            "name":"test43",
+            "email":"test43@test.com",
+            "password":"Password1@3",
+            "confirm_password":"Password1@3",
+            "birthday":"01012000",
+            "country":"Greece",
+            "result":"True"
+        }
+    }
+}
