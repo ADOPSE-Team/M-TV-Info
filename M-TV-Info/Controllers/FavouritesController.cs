@@ -17,9 +17,7 @@ namespace M_TV_Info.Controllers
         // Def Constructor
         public FavouritesController(ApplicationDbContext context)
         {
-            // _userManager = userManager;
             _context = context;
-
         }
 
         // Add To Favourites
@@ -49,13 +47,15 @@ namespace M_TV_Info.Controllers
         // Remove From Favourites
         [Route("api/AjaxAPI/RemoveFromFavourites")]
         [HttpPost]
-        public void delete(FavouriteModel item)
+        public ActionResult RemoveFromFavourites(int id)
         {
-            using (var context = new ApplicationDbContext())
-            {
-                context.Favourite.Remove(item);
-                context.SaveChanges();
-            }
+            var getFav = _context.Favourite.Where(f => f.id == id).First();
+
+            _context.Favourite.Remove(getFav);
+
+            _context.SaveChanges();
+            
+            return Ok("Deleted");
         }        
     }
 }

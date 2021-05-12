@@ -42,23 +42,18 @@ namespace M_TV_Info.Controllers
             return Ok(model);
         }
 
-        public void update(WatchlistModel item)
+        // Remove From WatchList
+        [Route("api/AjaxAPI/RemoveFromWatchList")]
+        [HttpPost]
+        public ActionResult RemoveFromWatchList(int id)
         {
-            using (var context = new ApplicationDbContext())
-            {
-                var existing = context.Watchlist.Where(x => x.id == item.id).First();
-                existing = item;
-                context.SaveChanges();
-            }
-        }
+            var getWatch = _context.Watchlist.Where(w => w.id == id).First();
 
-        public void delete(WatchlistModel item)
-        {
-            using (var context = new ApplicationDbContext())
-            {
-                context.Watchlist.Remove(item);
-                context.SaveChanges();
-            }
+            _context.Watchlist.Remove(getWatch);
+
+            _context.SaveChanges();
+            
+            return Ok("Deleted");
         }
     }
 }

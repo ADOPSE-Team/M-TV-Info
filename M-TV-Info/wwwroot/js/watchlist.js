@@ -1,3 +1,4 @@
+// Add to WatchList
 $(document).ready( function() { 
     $('#addWatch').click( function() {
         var media_id = $('#movie_id');
@@ -17,5 +18,22 @@ $(document).ready( function() {
                 alert("Succesfully Added");
             }
         });
+    });
+});
+
+// Remove From WatchList
+$(document).ready( function(){
+    $('#removeWatch').click( function(){
+        var watch_id = $('#watch_id').val();
+        $.ajax({
+            type: "POST", //HTTP POST Method
+            url: "/api/AjaxAPI/RemoveFromWatchList",
+            dataType: "int",
+            data: watch_id,
+            success: function (data) {
+                alert("Succesfully Deleted");
+            }
+        });
+        location.reload();
     });
 });

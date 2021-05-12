@@ -19,3 +19,20 @@
         });
     });
 });
+
+// Remove From WatchList
+$(document).ready( function(){
+    $('#removeFav').click( function(){
+        var fav_id = $('#fav_id').val();
+        $.ajax({
+            type: "POST", //HTTP POST Method
+            url: "/api/AjaxAPI/RemoveFromFavourites",
+            dataType: "int",
+            data: watch_id,
+            success: function (data) {
+                alert("Succesfully Deleted");
+            }
+        });
+        location.reload();
+    });
+});
