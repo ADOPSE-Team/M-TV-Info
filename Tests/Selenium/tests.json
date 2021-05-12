@@ -52,5 +52,21 @@
             "country":"Greece",
             "result":"True"
         }
+    },
+    "profile": {
+        "test1": {
+            "username":"Test1",
+            "name":"test1",
+            "email":"test1@test.com",
+            "password":"Password1@3",
+            "birthday":"2021-05-11",
+            "country":"Andorra"
+        }
+    },
+    "delete": {
+        "test1": {
+            "email": "test41@test.com",
+            "password":"Password1@3"
+        }
     }
 }
