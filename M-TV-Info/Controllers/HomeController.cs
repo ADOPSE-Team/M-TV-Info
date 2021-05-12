@@ -93,35 +93,10 @@ namespace M_TV_Info.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(string query)
         {
-            return View();
-        }
+            var data = await client.GetStringAsync("https://api.themoviedb.org/3/search/multi?api_key=" + Constants.ApiKey + "&query=" + query);
+            var content = JsonConvert.DeserializeObject<SearchModel>(data);
 
-        // Auto Complete Search
-        [Produces("application/json")]
-        [HttpGet("search")]
-        public async Task<IActionResult> AutocompleteSearch()
-        {
-            try
-            {
-                string term = HttpContext.Request.Query["term"].ToString();
-                if(!(term is null))
-                {
-                    var data = await client.GetStringAsync("https://api.themoviedb.org/3/search/multi?api_key=" + Constants.ApiKey + 
-                                            "&query" + term);
-                    
-                    var content = JsonConvert.DeserializeObject<SearchModel>(data);
-
-                    return Ok(content);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            return View(content);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
