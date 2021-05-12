@@ -249,3 +249,69 @@ def execute_delete_tests():
         i+=1
 
         close()
+    driver.find_element_by_xpath("// a[contains(text(),'Hello ')]").click()
+
+def password(email, password):
+    temp_password = "TempPassword1@3"
+
+    if(login(email, password)):
+        driver.find_element_by_xpath("// a[contains(text(),'Hello ')]").click()
+        driver.find_element_by_xpath("// a[contains(text(),'Password')]").click()
+
+        current_password = driver.find_element_by_id("Input_OldPassword")
+        new_password = driver.find_element_by_id("Input_NewPassword")
+        confirm_new_password = driver.find_element_by_id("Input_ConfirmPassword")
+
+        current_password.send_keys(password)
+        new_password.send_keys(temp_password)
+        confirm_new_password.send_keys(temp_password)
+
+        driver.find_element_by_xpath("// button[contains(text(),'Update password')]").click()
+        driver.find_element_by_xpath("// button[contains(text(),'Logout')]").click()
+        
+        if(login(email, temp_password)):
+            driver.find_element_by_xpath("// a[contains(text(),'Hello ')]").click()
+            driver.find_element_by_xpath("// a[contains(text(),'Password')]").click()
+
+            current_password = driver.find_element_by_id("Input_OldPassword")
+            new_password = driver.find_element_by_id("Input_NewPassword")
+            confirm_new_password = driver.find_element_by_id("Input_ConfirmPassword")
+
+            current_password.send_keys(temp_password)
+            new_password.send_keys(password)
+            confirm_new_password.send_keys(password)
+
+            driver.find_element_by_xpath("// button[contains(text(),'Update password')]").click()
+
+            return 1
+        else:
+            return 0
+    else:
+        return -1
+
+def execute_password_tests():
+    tests = manager.get_password_tests()
+
+    print("Password Tests:", len(tests))
+    i = 1
+
+    for test in tests:
+        setup()
+
+        password_result = password(
+            tests.get(test).get("email"),
+            tests.get(test).get("password")
+        )
+
+        if (password_result == 1):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "PASSED")
+        elif (password_result == 0):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tPassword didn't change")
+        else:
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tFailed to login")
+
+        i+=1
+
+        close()

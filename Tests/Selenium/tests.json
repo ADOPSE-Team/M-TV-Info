@@ -68,5 +68,11 @@
             "email": "test41@test.com",
             "password":"Password1@3"
         }
+    },
+    "password": {
+        "test1": {
+            "email":"test1@test.com",
+            "password":"Password1@3"
+        }
     }
 }

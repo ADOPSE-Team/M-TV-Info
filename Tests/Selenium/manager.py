@@ -26,3 +26,7 @@ def get_profile_tests():
 def get_delete_tests():
     tests = get_json("tests.json")
     return tests.get("delete")
+
+def get_password_tests():
+    tests = get_json("tests.json")
+    return tests.get("password")
