@@ -2,6 +2,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from pynput.keyboard import Key, Controller
 from selenium import webdriver
+from sys import platform
+from sys import exit
 from time import sleep
 import manager
 
@@ -10,9 +12,19 @@ driver = None
 
 def setup():
     global URL 
-    URL = manager.get_URL()
     global driver 
-    driver = webdriver.Firefox()
+
+    if (platform == "linux"):
+        URL = manager.get_URL("default-config")
+        driver = webdriver.Firefox()
+    elif (platform == "win32"):
+        URL = manager.get_URL("windows-config")
+        path = manager.get_gecko_location("windows-config")
+        driver = webdriver.Firefox(executable_path=path)
+    else:
+        print("Unsupported platform")
+        exit(1)
+
 
 def close():
     driver.close()    
@@ -249,7 +261,6 @@ def execute_delete_tests():
         i+=1
 
         close()
-    driver.find_element_by_xpath("// a[contains(text(),'Hello ')]").click()
 
 def password(email, password):
     temp_password = "TempPassword1@3"
