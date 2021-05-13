@@ -15,17 +15,30 @@
                     String path = "https://image.tmdb.org/t/p/original" + @Model.poster_path;
                 }
                 <img src=@path class="moviePoster" />
-                <div class="add-buttons">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                    <input type="hidden" id="poster_path" value="@path">
-                    <input type="hidden" id="movie_id" value="@Model.id">
-                    <input type="hidden" id="movie_title" value="@Model.title">
-                    <img src="~/assets/addToFavoriteListButton.png" id="addFav" class="addFav" alt-="Add to your favorites">
-                    <img src="~/assets/addToWatchlistButton.png" id="addWatch" class="addWatch" alt="Add to your watchlist">
-                    <img src="~/assets/addReviewButton.png" id="addRev" class="addRev" alt="Add Review">
-                    }
-                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="add-buttons">
+                        <input type="hidden" id="poster_path" value="@path">
+                        <input type="hidden" id="movie_id" value="@Model.id">
+                        <input type="hidden" id="movie_title" value="@Model.title">
+                        <img src="~/assets/addToFavoriteListButton.png" id="addFav" class="addFav" alt-="Add to your favorites">
+                        <img src="~/assets/addToWatchlistButton.png" id="addWatch" class="addWatch" alt="Add to your watchlist">
+                    </div>
+                    <div class="rateMedia">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                }
+
             </div>
             <div class="movie-dets">
                 <div class="movieTop">
