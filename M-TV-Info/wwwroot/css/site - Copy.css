@@ -485,3 +485,49 @@ div.rating {
     .rate > label:hover ~ input:checked ~ label {
         color: #725ac1;
     }
+
+.searchResultList {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #242038;
+    border-radius: 5px;
+    grid-row-gap: 14px;
+    padding: 100px;
+}
+.searchResult {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    background-color: #cec6e8;
+}
+.searchPoster {
+    max-width: 10%;
+    height: auto;
+    grid-column: 1;
+    grid-row: 1 /span 3;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+    width: 100vw;
+    justify-self:center;
+    align-self:center;
+}
+.aSearchPoster {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    display: grid;
+    background-color: #b0a6d0;
+}
+.aSearchTitle {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-self: center;
+}
+.aSearchButton {
+    grid-column-start: 3;
+    justify-self: end;
+    align-self: center;
+}
+h3.search{
+    color:#f8f0fb;
+    font-size:50px;
+}
