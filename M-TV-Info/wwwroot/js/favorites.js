@@ -28,7 +28,7 @@ $(document).ready( function(){
             type: "POST", //HTTP POST Method
             url: "/api/AjaxAPI/RemoveFromFavourites",
             dataType: "int",
-            data: watch_id,
+            data: fav_id,
             success: function (data) {
                 alert("Succesfully Deleted");
             }
