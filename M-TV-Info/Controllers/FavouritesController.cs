@@ -31,9 +31,7 @@ namespace M_TV_Info.Controllers
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
             
-            var callMedia = _context.Favourite.Where( i => i.media_id == item.media_id )
-                                              .Where( u => u.user_id == userId)
-                                              .First();
+            var callMedia = _context.Favourite.Where( i => i.media_id == item.media_id && i.user_id == userId).ToList();
 
             if(!(callMedia is null))
             {
