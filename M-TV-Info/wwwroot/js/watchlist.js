@@ -16,6 +16,9 @@ $(document).ready( function() {
             //contentType: "application/json; charset=utf-8",
             success: function (data) {
                 alert("Succesfully Added");
+            },
+            error: function (data) {
+                alert("Already Exists");
             }
         });
     });

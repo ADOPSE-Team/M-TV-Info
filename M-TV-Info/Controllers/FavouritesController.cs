@@ -33,7 +33,7 @@ namespace M_TV_Info.Controllers
             
             var callMedia = _context.Favourite.Where( i => i.media_id == item.media_id && i.user_id == userId).ToList();
 
-            if(!(callMedia is null))
+            if( callMedia.Any() )
             {
                 return BadRequest();
             }

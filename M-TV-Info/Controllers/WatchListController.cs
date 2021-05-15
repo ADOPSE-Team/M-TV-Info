@@ -30,16 +30,25 @@ namespace M_TV_Info.Controllers
             WatchlistModel model = new WatchlistModel();
             DateTime date = DateTime.Now;
 
-            model.media_id = item.media_id;
-            model.movie_title = item.movie_title;
-            model.poster_path = item.poster_path;
-            model.user_id = userId;
-            model.w_date = date;
+            var callMedia = _context.Watchlist.Where( i => i.media_id == item.media_id && i.user_id == userId).ToList();
 
-            _context.Watchlist.Add(model);
-            _context.SaveChanges();
+            if( callMedia.Any())
+            {
+                return BadRequest();
+            }
+            else
+            {
+                model.media_id = item.media_id;
+                model.movie_title = item.movie_title;
+                model.poster_path = item.poster_path;
+                model.user_id = userId;
+                model.w_date = date;
 
-            return Ok(model);
+                _context.Watchlist.Add(model);
+                _context.SaveChanges();
+
+                return Ok(model);
+            }
         }
 
         // Remove From WatchList
