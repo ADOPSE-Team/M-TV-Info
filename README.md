@@ -1,5 +1,5 @@
 ## Project:
-* ASP.NET Core + Razor + SQL
+* ASP.NET Core + Razor + Entity Framework
 
 ## How to Deploy:
 Install
