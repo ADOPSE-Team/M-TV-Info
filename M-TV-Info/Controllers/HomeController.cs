@@ -59,8 +59,12 @@ namespace M_TV_Info.Controllers
 
             WatchListModelView model = new WatchListModelView();
 
+            model.WatchlistModel = currentUserWatchList;
+
             return View(model);
         }
+
+        // Ratings Page
         public IActionResult Ratings()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -68,6 +72,8 @@ namespace M_TV_Info.Controllers
             var currentUserRatings = _context.Rating.Where(i => i.user_id == userId).ToList();
 
             RatingsModelView model = new RatingsModelView();
+
+            model.RatingsModel = currentUserRatings;
 
             return View(model);
         }
