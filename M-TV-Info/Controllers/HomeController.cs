@@ -63,7 +63,13 @@ namespace M_TV_Info.Controllers
         }
         public IActionResult Ratings()
         {
-            return View();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var currentUserRatings = _context.Rating.Where(i => i.user_id == userId).ToList();
+
+            RatingsModelView model = new RatingsModelView();
+
+            return View(model);
         }
 
         // Favorites Page

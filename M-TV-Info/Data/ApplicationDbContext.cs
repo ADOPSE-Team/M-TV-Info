@@ -16,7 +16,7 @@ namespace M_TV_Info.Data
         public DbSet<User> Users { get; set; }
         public DbSet<FavouriteModel> Favourite { get; set; }
         public DbSet<MediaModel> Media { get; set; }
-        public DbSet<RatingModel> Rating { get; set; }
+        public DbSet<RatingsModel> Rating { get; set; }
         public DbSet<WatchlistModel> Watchlist { get; set; }
     }
 }

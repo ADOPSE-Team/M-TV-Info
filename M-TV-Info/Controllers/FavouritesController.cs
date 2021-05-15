@@ -27,7 +27,6 @@ namespace M_TV_Info.Controllers
         {
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userName = User.FindFirstValue(ClaimTypes.Name);
 
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
