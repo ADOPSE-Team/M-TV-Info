@@ -64,10 +64,13 @@ namespace M_TV_Info
 
             app.UseEndpoints(endpoints =>
             {
+                // Home Controller
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
+
+                // Razor Pages
                 endpoints.MapRazorPages();
             });
         }

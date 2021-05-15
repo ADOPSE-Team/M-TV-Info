@@ -8,15 +8,18 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 namespace M_TV_Info.Controllers
 {
     public class FavouritesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        // Def Constructor
-        public FavouritesController(ApplicationDbContext context)
+        private readonly ILogger<FavouritesController> _logger;
+        public FavouritesController(ILogger<FavouritesController> logger,
+            ApplicationDbContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -30,10 +33,10 @@ namespace M_TV_Info.Controllers
 
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
-            
-            var callMedia = _context.Favourite.Where( i => i.media_id == item.media_id && i.user_id == userId).ToList();
 
-            if( callMedia.Any() )
+            var callMedia = _context.Favourite.Where(i => i.media_id == item.media_id && i.user_id == userId).ToList();
+
+            if (callMedia.Any())
             {
                 return BadRequest();
             }
@@ -62,8 +65,8 @@ namespace M_TV_Info.Controllers
             _context.Favourite.Remove(getFav);
 
             _context.SaveChanges();
-            
+
             return Ok("Deleted");
-        }        
+        }
     }
 }

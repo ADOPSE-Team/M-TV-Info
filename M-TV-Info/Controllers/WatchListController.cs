@@ -5,16 +5,20 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace M_TV_Info.Controllers
 {
     public class WatchListController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<WatchListController> _logger;
 
         // Def Constructor
-        public WatchListController(ApplicationDbContext context)
+        public WatchListController(ILogger<WatchListController> logger,
+            ApplicationDbContext context)
         {
+            _logger = logger;
             _context = context;
 
         }
@@ -25,14 +29,13 @@ namespace M_TV_Info.Controllers
         public ActionResult AddToWatchList(WatchListModelPost item)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userName = User.FindFirstValue(ClaimTypes.Name);
 
             WatchlistModel model = new WatchlistModel();
             DateTime date = DateTime.Now;
 
-            var callMedia = _context.Watchlist.Where( i => i.media_id == item.media_id && i.user_id == userId).ToList();
+            var callMedia = _context.Watchlist.Where(i => i.media_id == item.media_id && i.user_id == userId).ToList();
 
-            if( callMedia.Any())
+            if (callMedia.Any())
             {
                 return BadRequest();
             }
@@ -61,7 +64,7 @@ namespace M_TV_Info.Controllers
             _context.Watchlist.Remove(getWatch);
 
             _context.SaveChanges();
-            
+
             return Ok("Deleted");
         }
     }
