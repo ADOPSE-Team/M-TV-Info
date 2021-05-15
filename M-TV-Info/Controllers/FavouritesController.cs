@@ -30,17 +30,28 @@ namespace M_TV_Info.Controllers
 
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
+            
+            var callMedia = _context.Favourite.Where( i => i.media_id == item.media_id )
+                                              .Where( u => u.user_id == userId)
+                                              .First();
 
-            model.media_id = item.media_id;
-            model.movie_title = item.movie_title;
-            model.movie_poster = item.movie_poster;
-            model.user_id = userId;
-            model.w_date = date;
+            if(!(callMedia is null))
+            {
+                return BadRequest();
+            }
+            else
+            {
+                model.media_id = item.media_id;
+                model.movie_title = item.movie_title;
+                model.movie_poster = item.movie_poster;
+                model.user_id = userId;
+                model.w_date = date;
 
-            _context.Favourite.Add(model);
-            _context.SaveChanges();
+                _context.Favourite.Add(model);
+                _context.SaveChanges();
 
-            return Ok(model);
+                return Ok(model);
+            }
         }
 
         // Remove From Favourites
