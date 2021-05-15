@@ -15,6 +15,9 @@
             //contentType: "application/json; charset=utf-8",
             success: function () {
                 alert("Succesfully Added");
+            },
+            error: function() {
+                alert("Already Exist");
             }
         });
     });
