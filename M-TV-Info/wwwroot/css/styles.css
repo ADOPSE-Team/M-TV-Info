@@ -119,7 +119,14 @@ body.movieView {
     opacity: 90%;
     border-radius: 5px;
 }
-
+.moviePoster {
+    max-width: 39%;
+    height: auto;
+    grid-column: 1;
+    grid-row: 1 /span 3;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
 .movieTop {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 6fr;
@@ -456,7 +463,7 @@ div.rating {
 .rateMedia {
 float: left;
 height: 46px;
-padding: 0 40px;
+padding: 0 20px;
 align-self: center;
 justify-self:start;
 }
