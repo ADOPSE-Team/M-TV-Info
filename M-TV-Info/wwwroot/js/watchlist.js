@@ -7,7 +7,7 @@ $(document).ready( function() {
         var _item = new Object();
         _item.media_id = media_id.val();
         _item.movie_title = movie_title.val();
-        _item.movie_poster = movie_poster.val();
+        _item.poster_path = movie_poster.val();
         $.ajax({
             type: "POST", //HTTP POST Method  
             url: "/api/AjaxAPI/AddToWatchList", // Controller/View
