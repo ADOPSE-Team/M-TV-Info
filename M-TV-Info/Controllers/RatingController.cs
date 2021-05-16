@@ -32,14 +32,8 @@ namespace M_TV_Info.Controllers
 
             if(!(callRating is null))
             {
-                _ratings.media_id = ratings.media_id;
-                _ratings.movie_poster = ratings.movie_poster;
-                _ratings.movie_title = ratings.movie_title;
-                _ratings.user_id = userId;
-                _ratings.rate = ratings.star;
 
-                callRating = _ratings; // Update Ratings
-
+                callRating.rate = ratings.star;
                 _context.SaveChanges();
             }
             else 
@@ -49,6 +43,7 @@ namespace M_TV_Info.Controllers
                 _ratings.movie_title = ratings.movie_title;
                 _ratings.user_id = userId;
                 _ratings.rate = ratings.star;
+                _ratings.w_date = date;
 
                 _context.Add(_ratings);
                 _context.SaveChanges();
