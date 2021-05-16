@@ -40,7 +40,7 @@ namespace M_TV_Info.Controllers
                 _context.Watchlist.Remove(callMedia);
                 _context.SaveChanges();
 
-                return Ok();
+                return Ok(model);
             }
             else
             {
@@ -53,7 +53,7 @@ namespace M_TV_Info.Controllers
                 _context.Watchlist.Add(model);
                 _context.SaveChanges();
 
-                return Ok();
+                return Ok(model);
             }
         }
 
