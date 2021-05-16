@@ -1,3 +1,5 @@
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from pynput.keyboard import Key, Controller
@@ -324,5 +326,177 @@ def execute_password_tests():
             print("\tFailed to login")
 
         i+=1
+
+        close()
+
+def watchlist_add(email, password):
+    if login(email, password):
+        movie = driver.find_element_by_xpath("//div/div/div/div/div/div/a[1]").get_attribute("href")
+        driver.get(movie)
+
+        driver.find_element_by_id("addWatch").click()
+
+        driver.get(URL+"Home/Watchlist")
+        
+        for a in driver.find_elements_by_xpath(".//a"):
+            if (a.get_attribute("href") == movie):
+                return 1
+        return 0
+    else:
+        return -1
+
+def execute_watchlist_add_tests():
+    tests = manager.get_watchlist_tests()
+
+    print("Watchlist Add tests:", len(tests))
+    i = 1
+
+    for test in tests:
+        setup()
+
+        watchlist_result = watchlist_add(
+            tests.get(test).get("email"),
+            tests.get(test).get("password")
+        )
+
+        if (watchlist_result == 1):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "PASSED")
+        elif (watchlist_result == 0):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tMovie not added to watchlist")
+        else:
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tFailed to login")
+
+        i+= 1
+
+        close()
+
+def watchlist_remove(email, password):
+    if login(email, password):
+        movie = driver.find_element_by_xpath("//div/div/div/div/div/div/a[1]").get_attribute("href")
+        driver.get(movie)
+
+        driver.find_element_by_id("addWatch").click()
+
+        driver.get(URL+"Home/Watchlist")
+        
+        for a in driver.find_elements_by_xpath(".//a"):
+            if (a.get_attribute("href") == movie):
+                return 0
+        return 1
+    else:
+        return -1
+
+def execute_watchlist_remove_tests():
+    tests = manager.get_watchlist_tests()
+
+    print("Watchlist Remove tests:", len(tests))
+    i = 1
+
+    for test in tests:
+        setup()
+
+        watchlist_result = watchlist_remove(
+            tests.get(test).get("email"),
+            tests.get(test).get("password")
+        )
+
+        if (watchlist_result == 1):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "PASSED")
+        elif (watchlist_result == 0):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tMovie not removed from watchlist")
+        else:
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tFailed to login")
+
+        i+= 1
+
+        close()
+
+def favorite_add(email, password):
+    if login(email, password):
+        movie = driver.find_element_by_xpath("//div/div/div/div/div/div/a[1]").get_attribute("href")
+        driver.get(movie)
+
+        driver.find_element_by_id("addFav").click()
+
+        driver.get(URL+"Home/Favorites")
+        
+        for a in driver.find_elements_by_xpath(".//a"):
+            if (a.get_attribute("href") == movie):
+                return 1
+        return 0
+    else:
+        return -1
+
+def execute_favorite_add_tests():
+    tests = manager.get_favorite_tests()
+
+    print("Favorite Add tests:", len(tests))
+    i = 1
+
+    for test in tests:
+        setup()
+
+        favorite_result = favorite_add(
+            tests.get(test).get("email"),
+            tests.get(test).get("password")
+        )
+
+        if (favorite_result == 1):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "PASSED")
+        elif (favorite_result == 0):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tMovie not added to favorite")
+        else:
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tFailed to login")
+
+        i+= 1
+
+        close()
+
+def favorite_remove(email, password):
+    if login(email, password):
+        movie = driver.find_element_by_xpath("//div/div/div/div/div/div/a[1]").get_attribute("href")
+        driver.get(movie)
+
+        driver.find_element_by_id("addFav").click()
+
+        driver.get(URL+"Home/Favorites")
+        
+        for a in driver.find_elements_by_xpath(".//a"):
+            if (a.get_attribute("href") == movie):
+                return 0
+        return 1
+    else:
+        return -1
+
+def execute_favorite_remove_tests():
+    tests = manager.get_favorite_tests()
+
+    print("Favorite Remove tests:", len(tests))
+    i = 1
+
+    for test in tests:
+        setup()
+
+        favorite_result = favorite_remove(
+            tests.get(test).get("email"),
+            tests.get(test).get("password")
+        )
+
+        if (favorite_result == 1):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "PASSED")
+        elif (favorite_result == 0):
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tMovie not removed from favorite")
+        else:
+            print("[" + str(i) + "/" + str(len(tests)) + "]", "FAILED")
+            print("\tFailed to login")
+
+        i+= 1
 
         close()

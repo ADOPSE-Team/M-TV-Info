@@ -34,3 +34,11 @@ def get_delete_tests():
 def get_password_tests():
     tests = get_json("tests.json")
     return tests.get("password")
+
+def get_watchlist_tests():
+    tests = get_json("tests.json")
+    return tests.get("watchlist")
+
+def get_favorite_tests():
+    tests = get_json("tests.json")
+    return tests.get("favorite")

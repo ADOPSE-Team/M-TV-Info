@@ -82,5 +82,17 @@
             "email":"test1@test.com",
             "password":"Password1@3"
         }
+    },
+    "watchlist": {
+        "test1": {
+            "email": "test1@test.com",
+            "password":"Password1@3"
+        }
+    },
+    "favorite": {
+        "test1": {
+            "email": "test1@test.com",
+            "password":"Password1@3"
+        }
     }
 }
