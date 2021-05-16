@@ -45,9 +45,7 @@
                 @foreach (var item in Model.RatingsModel)
                 {
                     String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
-
                     <div class="ratingEntry">
-                        
                         <input type="hidden" id="poster_path" value="@path">
                         <input type="hidden" id="movie_id" value="@item.media_id">
                         <input type="hidden" id="movie_title" value="@item.movie_title">

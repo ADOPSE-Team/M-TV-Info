@@ -1,13 +1,8 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
+﻿a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
-
-/* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
 }
@@ -65,7 +60,6 @@ html {
 }
 
 body {
-    /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-color: #f8f0fb;
     color: #242038;
@@ -78,7 +72,7 @@ body {
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    line-height: 60px;
     bottom:-245px;
 }
 
@@ -111,7 +105,6 @@ hr.line1 {
 }
 /*MovieView*/
 body.movieView {
-    /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-color: #f8f0fb;
     color: #f8f0fb;
@@ -160,14 +153,6 @@ p.movieTitle {
 .btnPoster {
     display: grid;
     grid-template-rows: 2fr 2fr 2fr 1fr 1fr;
-}
-.moviePoster {
-    max-width: 39%;
-    height: auto;
-    grid-column: 1;
-    grid-row: 1 /span 3;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 10px;
 }
 .add-buttons {
     display: flex;
@@ -280,15 +265,6 @@ p.movieTitle {
     width: 100% !important;
     display: block !important;
 }
-.items {
-    /*display: flex;
-    flex-wrap: wrap;
-    background: #242038;
-    padding: 10px;
-    opacity: 90%;
-    border-radius: 5px;*/
-}
-
 /*Lists*/
 .movieList {
     display: flex;
@@ -327,11 +303,7 @@ p.movieTitle {
 .listTitleBtn {
     display: grid;
     grid-template-columns: 1fr auto;
-}
-.alist {
-    display: grid;
-    background-color: #b0a6d0;
-    align-self: center;
+    margin-top: 5%;
 }
 div.watchlist {
     display: grid;
@@ -438,7 +410,7 @@ div.rating {
 * {
     position: relative;
 }
-
+/*Star Tating*/
 .rate {
     float: left;
     height: 46px;
@@ -446,86 +418,87 @@ div.rating {
     align-self: center;
 }
 
-    .rate:not(:checked) > input {
-        position: absolute;
-        top: -9999px;
-    }
-
-    .rate:not(:checked) > label {
-        float: right;
-        width: 1em;
-        overflow: hidden;
-        white-space: nowrap;
-        cursor: pointer;
-        font-size: 30px;
-        color: #242038;
-    }
-
-        .rate:not(:checked) > label:before {
-            content: '★ ';
-        }
-
-    .rate > input:checked ~ label {
-        color: #725ac1;
-    }
-
-    .rate:not(:checked) > label:hover,
-    .rate:not(:checked) > label:hover ~ label {
-        color: #725ac1;
-    }
-
-    .rate > input:checked + label:hover,
-    .rate > input:checked + label:hover ~ label,
-    .rate > input:checked ~ label:hover,
-    .rate > input:checked ~ label:hover ~ label,
-    .rate > label:hover ~ input:checked ~ label {
-        color: #725ac1;
-    }
-    .rateMedia {
-    float: left;
-    height: 46px;
-    padding: 0 40px;
-    align-self: center;
-    justify-self:start;
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
 }
 
-    .rateMedia:not(:checked) > input {
-        position: absolute;
-        top: -9999px;
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #242038;
+}
+
+    .rate:not(:checked) > label:before {
+        content: '★ ';
     }
 
-    .rateMedia:not(:checked) > label {
-        float: right;
-        width: 1em;
-        overflow: hidden;
-        white-space: nowrap;
-        cursor: pointer;
-        font-size: 30px;
-        color: #f8f0fb;
+.rate > input:checked ~ label {
+    color: #725ac1;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #725ac1;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #725ac1;
+}
+.rateMedia {
+float: left;
+height: 46px;
+padding: 0 40px;
+align-self: center;
+justify-self:start;
+}
+
+.rateMedia:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rateMedia:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #f8f0fb;
+}
+
+    .rateMedia:not(:checked) > label:before {
+        content: '★ ';
+        font-size: 40px;
     }
 
-        .rateMedia:not(:checked) > label:before {
-            content: '★ ';
-            font-size: 40px;
-        }
+.rateMedia > input:checked ~ label {
+    color: #725ac1;
+}
 
-    .rateMedia > input:checked ~ label {
-        color: #725ac1;
-    }
+.rateMedia:not(:checked) > label:hover,
+.rateMedia:not(:checked) > label:hover ~ label {
+    color: #725ac1;
+}
 
-    .rateMedia:not(:checked) > label:hover,
-    .rateMedia:not(:checked) > label:hover ~ label {
-        color: #725ac1;
-    }
+.rateMedia > input:checked + label:hover,
+.rateMedia > input:checked + label:hover ~ label,
+.rateMedia > input:checked ~ label:hover,
+.rateMedia > input:checked ~ label:hover ~ label,
+.rateMedia > label:hover ~ input:checked ~ label {
+    color: #725ac1;
+}
 
-    .rateMedia > input:checked + label:hover,
-    .rateMedia > input:checked + label:hover ~ label,
-    .rateMedia > input:checked ~ label:hover,
-    .rateMedia > input:checked ~ label:hover ~ label,
-    .rateMedia > label:hover ~ input:checked ~ label {
-        color: #725ac1;
-    }
-
+    /*Search*/
 .searchResultList {
     display: flex;
     flex-wrap: wrap;
