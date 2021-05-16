@@ -1,5 +1,4 @@
 ﻿@model M_TV_Info.Models.RatingsModelView;
-<link rel="stylesheet" href="~/css/site - Copy.css" />
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
     <script src="~/js/ratings.js"></script>
@@ -43,11 +42,12 @@
         <div>
             <h2 id="border-bottom">Full list</h2>
             <div class="ratingList">
-                <div class="ratingEntry">
-                    @foreach (var item in Model.RatingsModel)
-                    {
-                        String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
+                @foreach (var item in Model.RatingsModel)
+                {
+                    String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
 
+                    <div class="ratingEntry">
+                        
                         <input type="hidden" id="poster_path" value="@path">
                         <input type="hidden" id="movie_id" value="@item.media_id">
                         <input type="hidden" id="movie_title" value="@item.movie_title">
@@ -129,16 +129,16 @@
                             }
                         </div>
                         <div class="ratingButtons">
-                        @using (Html.BeginForm("RemoveRating", "Ratings", FormMethod.Post))
-                        {
-                            <input type="hidden" name="id" value="@item.id">
-                            <button type="submit">
-                                <img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
-                            </button>
-                        }
+                            @using (Html.BeginForm("RemoveRating", "Ratings", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value="@item.id">
+                                <button type="submit">
+                                    <img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
+                                </button>
+                            }
+                        </div>
                     </div>
-                    }
-                </div>
+                }
             </div>
         </div>
     </div>

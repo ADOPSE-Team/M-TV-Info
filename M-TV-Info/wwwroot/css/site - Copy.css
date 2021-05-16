@@ -86,12 +86,6 @@ body {
   background-color: #725ac1;
   color: #725ac1;
 }
-.ratingList {
-    display: grid;
-    grid-template-columns: 75px 1fr 1fr;
-    grid-auto-rows: minmax(auto, 100px);
-    grid-gap: 10px;
-}
 #col {
     display: flex;
     column-gap: 10px;
