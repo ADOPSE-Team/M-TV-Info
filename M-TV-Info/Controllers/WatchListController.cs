@@ -33,11 +33,14 @@ namespace M_TV_Info.Controllers
             WatchlistModel model = new WatchlistModel();
             DateTime date = DateTime.Now;
 
-            var callMedia = _context.Watchlist.Where(i => i.media_id == item.media_id && i.user_id == userId).ToList();
+            var callMedia = _context.Watchlist.Where(i => i.media_id == item.media_id && i.user_id == userId).First();
 
-            if (callMedia.Any())
+            if (!(callMedia is null))
             {
-                return BadRequest();
+                _context.Watchlist.Remove(callMedia);
+                _context.SaveChanges();
+
+                return Ok();
             }
             else
             {
@@ -50,7 +53,7 @@ namespace M_TV_Info.Controllers
                 _context.Watchlist.Add(model);
                 _context.SaveChanges();
 
-                return Ok(model);
+                return Ok();
             }
         }
 

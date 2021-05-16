@@ -34,11 +34,14 @@ namespace M_TV_Info.Controllers
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
 
-            var callMedia = _context.Favourite.Where(i => i.media_id == item.media_id && i.user_id == userId).ToList();
+            var callMedia = _context.Favourite.Where(i => i.media_id == item.media_id && i.user_id == userId).First();
 
-            if (callMedia.Any())
+            if (!(callMedia is null))
             {
-                return BadRequest();
+                _context.Favourite.Remove(callMedia);
+                _context.SaveChanges();
+
+                return Ok();
             }
             else
             {
@@ -51,7 +54,7 @@ namespace M_TV_Info.Controllers
                 _context.Favourite.Add(model);
                 _context.SaveChanges();
 
-                return Ok(model);
+                return Ok();
             }
         }
         
