@@ -51,5 +51,19 @@ namespace M_TV_Info.Controllers
 
             return Ok(_ratings);
         }
+
+        // Remove from Ratings
+        [Route("Ratings")]
+        [HttpPost]
+        public ActionResult RemoveRating(int id)
+        {
+             var getRate = _context.Rating.Where(r => r.id == id).FirstOrDefault();
+
+            _context.Rating.Remove(getRate);
+
+            _context.SaveChanges();
+
+            return Redirect("Home/Ratings");
+        }
     }
 }
