@@ -57,7 +57,7 @@ namespace M_TV_Info.Controllers
         [HttpPost]
         public ActionResult RemoveRating(int id)
         {
-             var getRate = _context.Rating.Where(r => r.id == id).FirstOrDefault();
+            var getRate = _context.Rating.Where(r => r.id == id).FirstOrDefault();
 
             _context.Rating.Remove(getRate);
 
@@ -73,11 +73,11 @@ namespace M_TV_Info.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var getFav = _context.Favourite.Where(i => i.media_id == id && i.user_id == userId).FirstOrDefault();
+            var getRate = _context.Rating.Where(i => i.media_id == id && i.user_id == userId).FirstOrDefault();
 
-            if( !(getFav is null) )
+            if( !(getRate is null) )
             {
-                return getFav.id;
+                return getRate.rate;
             }
             else
             {
