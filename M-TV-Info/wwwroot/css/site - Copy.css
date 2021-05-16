@@ -311,7 +311,7 @@ p.movieTitle {
 }
 .movieEntry {
     display: grid;
-    grid-template-columns: 1fr 8fr 2fr;
+    grid-template-columns: 1fr 8fr;
     background-color: #cec6e8;
 }
 .ratingEntry {
@@ -330,9 +330,14 @@ p.movieTitle {
     border-radius: 10px;
     justify-self:center;
 }
-.alist{
-    display:grid;
+.listTitleBtn {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.alist {
+    display: grid;
     background-color: #b0a6d0;
+    align-self: center;
 }
 div.watchlist {
     display: flex;

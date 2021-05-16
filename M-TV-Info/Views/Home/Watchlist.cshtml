@@ -51,11 +51,13 @@
                     </a>
                     @using (Html.BeginForm("RemoveFromWatchList", "WatchList", FormMethod.Post))
                     {
+                    <div class="listTitleBtn">
                         <h3 style="align-self: center;margin-left: 5px; color:#242038">@item.movie_title</h3>
                         <button type="submit">
                             <input type="hidden" id="watch_id" name="id" value="@item.id">
                             <img src="~/assets/DeleteButton.png" width=50px height=50px id="removeWatch" class="deleteButton" />
                         </button>
+                    </div>
                     }
                 </div>
             }
