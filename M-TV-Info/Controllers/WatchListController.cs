@@ -65,7 +65,7 @@ namespace M_TV_Info.Controllers
 
             _context.SaveChanges();
 
-            return Ok("Home/Watchlist");
+            return Redirect("Home/Watchlist");
         }
     }
 }
