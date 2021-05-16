@@ -7,10 +7,6 @@
 <body class="bg1">
     <div class="ratingsList">
         <h1 class="border-bottom">My Ratings</h1>
-        @foreach (var item in Model.RatingsModel)
-        {
-            <p>@item.movie_title</p>
-        }
         <div class="items">
             <h2>Recent Entries</h2>
             <div id="RecentRatings" class="carousel slide" data-ride="carousel" data-interval="false" style=" display: grid; grid-template-columns: 25px 200px 1fr 200px 25px; align-content: center;">
@@ -51,6 +47,11 @@
                     @foreach (var item in Model.RatingsModel)
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
+
+                        <input type="hidden" id="poster_path" value="@path">
+                        <input type="hidden" id="movie_id" value="@item.media_id">
+                        <input type="hidden" id="movie_title" value="@item.movie_title">
+
                         <img src="@path" width=100px height=148px />
                         <h3 style="align-self:center; font-size: 42px;">@item.movie_title</h3>
 
@@ -127,10 +128,16 @@
                                 <label for="star1" title="text">1 star</label>
                             }
                         </div>
-                    }
-                    <div class="ratingButtons">
-                        <img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
+                        <div class="ratingButtons">
+                        @using (Html.BeginForm("RemoveRating", "Ratings", FormMethod.Post))
+                        {
+                            <input type="hidden" name="id" value="@item.id">
+                            <button type="submit">
+                                <img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
+                            </button>
+                        }
                     </div>
+                    }
                 </div>
             </div>
         </div>

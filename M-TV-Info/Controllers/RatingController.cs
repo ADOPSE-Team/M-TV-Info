@@ -51,5 +51,38 @@ namespace M_TV_Info.Controllers
 
             return Ok(_ratings);
         }
+
+        // Remove from Ratings
+        [Route("Ratings")]
+        [HttpPost]
+        public ActionResult RemoveRating(int id)
+        {
+            var getRate = _context.Rating.Where(r => r.id == id).FirstOrDefault();
+
+            _context.Rating.Remove(getRate);
+
+            _context.SaveChanges();
+
+            return Redirect("Home/Ratings");
+        }
+
+        // Check if Exists
+        [Route("/api/AjaxAPI/CheckRating")]
+        [HttpPost]
+        public int CheckRating(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var getRate = _context.Rating.Where(i => i.media_id == id && i.user_id == userId).FirstOrDefault();
+
+            if( !(getRate is null) )
+            {
+                return getRate.rate;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
