@@ -9,11 +9,7 @@
         data: _movie,
         success: function () {
             $("#addFav").attr("src", _fav_icon);
-            $('#fav-exists').val(1);
-        },
-        error: function () {
-            $('#fav-exists').val(0);
-        } 
+        }
     });
     // Check Watch
     $.ajax({
@@ -22,10 +18,6 @@
         data: _movie,
         success: function () {
             $("#addWatch").attr("src", _watch_icon);
-            $('#watch-exists').val(1);
-        },
-        error: function () {
-            $('#watch-exists').val(0);
         }
     });
 });

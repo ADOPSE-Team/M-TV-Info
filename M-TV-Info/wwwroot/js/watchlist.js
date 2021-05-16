@@ -1,11 +1,6 @@
 // Add & Remove From WatchList
 $(document).ready( function() { 
     $('#addWatch').click( function() {
-        // Icons
-        var _watch_icon = "/assets/watchlistButton2.png";
-        var _watc = "/assets/addToWatchlistButton.png";
-        var exists = $('#watch-exists').val();
-
         // Object
         var media_id = $('#movie_id');
         var movie_title = $('#movie_title');
@@ -25,15 +20,7 @@ $(document).ready( function() {
             data: _item,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                if( exists == "1" ){
-                    $("#addWatch").attr("src", _watch);
-                    exists.val("0");
-                }
-                else{
-                    $("#addWatch").attr("src", _watch_icon);
-                    exists.val("1");
-                }
-                
+                location.reload();
             }
         });
     });
