@@ -65,5 +65,24 @@ namespace M_TV_Info.Controllers
 
             return Redirect("Home/Ratings");
         }
+
+        // Check if Exists
+        [Route("/api/AjaxAPI/CheckRating")]
+        [HttpPost]
+        public int CheckRating(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var getFav = _context.Favourite.Where(i => i.media_id == id && i.user_id == userId).FirstOrDefault();
+
+            if( !(getFav is null) )
+            {
+                return getFav.id;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
