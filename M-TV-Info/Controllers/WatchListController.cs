@@ -55,7 +55,7 @@ namespace M_TV_Info.Controllers
         }
 
         // Remove From WatchList
-        [Route("WatchList/RemoveFromWatchList")]
+        [Route("WatchList")]
         [HttpPost]
         public ActionResult RemoveFromWatchList(int id)
         {
