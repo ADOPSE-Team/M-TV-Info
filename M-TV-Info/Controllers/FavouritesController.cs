@@ -66,7 +66,7 @@ namespace M_TV_Info.Controllers
 
             _context.SaveChanges();
 
-            return Redirect("Favorites");
+            return Redirect("Home/Favorites");
         }
     }
 }
