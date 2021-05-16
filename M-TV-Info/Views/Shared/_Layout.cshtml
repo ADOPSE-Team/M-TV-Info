@@ -33,8 +33,8 @@
                                 <input type="search" placeholder="Enter text to search" class="searchBox" name="query">
                             }
                         </li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
+                        @* @if (User.Identity.IsAuthenticated)
+                        { *@
                         <li class="nav-item">
                             <div class="buttons">
                                 <a asp-controller="Home" asp-action="Favorites" class="favA"><img src="~/assets/favoriteListButton.png" class="favB"></a>
@@ -42,7 +42,7 @@
                                 <a asp-controller="Home" asp-action="Ratings" class="rateA"><img src="~/assets/editButton.png" class='rateB'></a>
                             </div>
                         </li>
-                         }
+                         @* } *@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

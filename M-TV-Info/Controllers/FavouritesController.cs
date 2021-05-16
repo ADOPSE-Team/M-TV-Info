@@ -56,7 +56,7 @@ namespace M_TV_Info.Controllers
         }
 
         // Remove From Favourites
-        [Route("api/AjaxAPI/RemoveFromFavourites")]
+        [Route("Favourites/RemoveFromFavourites")]
         [HttpPost]
         public ActionResult RemoveFromFavourites(int id)
         {
@@ -66,7 +66,7 @@ namespace M_TV_Info.Controllers
 
             _context.SaveChanges();
 
-            return Ok("Deleted");
+            return Redirect("Favorites");
         }
     }
 }
