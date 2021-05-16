@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace M_TV_Info.Controllers
 {
+    [Route("Favourites")]
     public class FavouritesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -56,7 +57,6 @@ namespace M_TV_Info.Controllers
         }
 
         // Remove From Favourites
-        [Route("Favourites/RemoveFromFavourites")]
         [HttpPost]
         public ActionResult RemoveFromFavourites(int id)
         {
