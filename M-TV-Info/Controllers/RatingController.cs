@@ -28,9 +28,7 @@ namespace M_TV_Info.Controllers
             RatingsModel _ratings = new RatingsModel();
             DateTime date = DateTime.Now;
 
-            var callRating = _context.Rating
-                .Where(i => i.media_id == ratings.media_id)
-                .Where(u => u.user_id == userId).First();
+            var callRating = _context.Rating.Where(i => i.media_id == ratings.media_id && i.user_id ==userId).FirstOrDefault();
 
             if(!(callRating is null))
             {
@@ -38,6 +36,7 @@ namespace M_TV_Info.Controllers
                 _ratings.movie_poster = ratings.movie_poster;
                 _ratings.movie_title = ratings.movie_title;
                 _ratings.user_id = userId;
+                _ratings.rate = ratings.star;
 
                 callRating = _ratings; // Update Ratings
 
@@ -49,6 +48,7 @@ namespace M_TV_Info.Controllers
                 _ratings.movie_poster = ratings.movie_poster;
                 _ratings.movie_title = ratings.movie_title;
                 _ratings.user_id = userId;
+                _ratings.rate = ratings.star;
 
                 _context.Add(_ratings);
                 _context.SaveChanges();

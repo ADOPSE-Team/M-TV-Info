@@ -19,10 +19,9 @@ $(document).ready( function(){
             data: _review,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                alert("Succesfully Added 5 Stars");
+                location.reload();
             }
         });
-        location.reload();
     });
 
     // 4 Star
@@ -43,10 +42,9 @@ $(document).ready( function(){
             data: _review,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                alert("Succesfully Added 4 Stars");
+                location.reload();
             }
         });
-        location.reload();
     });
 
     // 3 Star
@@ -67,10 +65,9 @@ $(document).ready( function(){
             data: _review,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                alert("Succesfully Added 3 Stars");
+                location.reload();
             }
         });
-        location.reload();
     });
 
     // 2 Star
@@ -91,10 +88,9 @@ $(document).ready( function(){
             data: _review,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                alert("Succesfully Added 2 Stars");
+                location.reload();
             }
         });
-        location.reload();
     });
 
     // 1 Star
@@ -115,9 +111,8 @@ $(document).ready( function(){
             data: _review,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                alert("Succesfully Added 1 Stars");
+                location.reload();
             }
         });
-        location.reload();
     });
 });
