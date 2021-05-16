@@ -68,5 +68,24 @@ namespace M_TV_Info.Controllers
 
             return Redirect("Home/Favorites");
         }
+
+        // Check if Exists
+        [Route("/api/AjaxAPI/CheckFavourites")]
+        [HttpPost]
+        public ActionResult CheckFavourites(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var getFav = _context.Favourite.Where(i => i.media_id == id && i.user_id == userId).ToList();
+
+            if( getFav.Any() )
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

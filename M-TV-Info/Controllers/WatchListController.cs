@@ -67,5 +67,24 @@ namespace M_TV_Info.Controllers
 
             return Redirect("Home/Watchlist");
         }
+
+        // Check if Exists
+        [Route("/api/AjaxAPI/CheckWatchList")]
+        [HttpPost]
+        public ActionResult CheckWatchList(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var getWatc = _context.Watchlist.Where(i => i.media_id == id && i.user_id == userId).ToList();
+
+            if( getWatc.Any() )
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
