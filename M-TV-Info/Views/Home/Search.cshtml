@@ -9,8 +9,15 @@
         {
             String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
                 <div class="searchResult">
-                    <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.id class="aSearchPoster"><img src=@path alt="@item.original_title" class="searchPoster"></a>
-                    <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.id  class="aSearchTitle"><h3 style="align-self: center;margin-left: 5px; color:#242038; font-size: 121%;">@item.original_title</h3></a>
+                   @if (@item.poster_path is not null)
+                   {
+                       <img src=@path alt="@item.original_title" class="searchPoster">
+                    }
+                    else
+                    {
+                        <img src=/assets/1.jpg alt="@item.original_title" class="searchPoster">
+                    }
+                    <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.id  class="aSearchTitle"><h3 style="margin-left: 5px; color:#242038; font-size: 170%; margin-top: 13%;">@item.original_title</h3></a>
                     <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.id class="aSearchButton"><img src="~/assets/MovieViewButton.png" width=50px height=50px id="movieView" class="movieViewButton" /></a>
                     <input type="hidden" id="fav_id" value="@item.id">
                 </div>
