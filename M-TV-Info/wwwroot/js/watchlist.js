@@ -25,13 +25,13 @@ $(document).ready( function() {
             data: _item,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                if( exists == 1 ){
+                if( exists == "1" ){
                     $("#addWatch").attr("src", _watch);
-                    exists.val(0);
+                    exists.val("0");
                 }
                 else{
                     $("#addWatch").attr("src", _watch_icon);
-                    exists.val(1);
+                    exists.val("1");
                 }
                 
             }

@@ -26,15 +26,15 @@ $(document).ready( function() {
             data: _item,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                if( exists == 1)
+                if( exists == "1")
                 {
                     $("#addFav").attr("src", _fav);
-                    $('#watch-exists').val(0);
+                    $('#watch-exists').val("0");
                 }
                 else
                 {
                     $("#addFav").attr("src", _fav_icon);
-                    $('#watch-exists').val(1);
+                    $('#watch-exists').val("1");
                 }
             }
         });

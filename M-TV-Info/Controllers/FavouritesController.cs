@@ -34,7 +34,7 @@ namespace M_TV_Info.Controllers
             FavouriteModel model = new FavouriteModel();
             DateTime date = DateTime.Now;
 
-            var callMedia = _context.Favourite.Where(i => i.media_id == item.media_id && i.user_id == userId).First();
+            var callMedia = _context.Favourite.Where(i => i.media_id == item.media_id && i.user_id == userId).FirstOrDefault();
 
             if (!(callMedia is null))
             {
@@ -63,7 +63,7 @@ namespace M_TV_Info.Controllers
         [HttpPost]
         public ActionResult RemoveFromFavourites(int id)
         {
-            var getFav = _context.Favourite.Where(f => f.id == id).First();
+            var getFav = _context.Favourite.Where(f => f.id == id).FirstOrDefault();
 
             _context.Favourite.Remove(getFav);
 

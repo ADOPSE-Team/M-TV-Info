@@ -33,7 +33,7 @@ namespace M_TV_Info.Controllers
             WatchlistModel model = new WatchlistModel();
             DateTime date = DateTime.Now;
 
-            var callMedia = _context.Watchlist.Where(i => i.media_id == item.media_id && i.user_id == userId).First();
+            var callMedia = _context.Watchlist.Where(i => i.media_id == item.media_id && i.user_id == userId).FirstOrDefault();
 
             if (!(callMedia is null))
             {
@@ -62,7 +62,7 @@ namespace M_TV_Info.Controllers
         [HttpPost]
         public ActionResult RemoveFromWatchList(int id)
         {
-            var getWatch = _context.Watchlist.Where(w => w.id == id).First();
+            var getWatch = _context.Watchlist.Where(w => w.id == id).FirstOrDefault();
 
             _context.Watchlist.Remove(getWatch);
 
