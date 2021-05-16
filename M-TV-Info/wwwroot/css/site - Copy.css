@@ -340,8 +340,7 @@ p.movieTitle {
     align-self: center;
 }
 div.watchlist {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 100px;
     background-color: rgb(36, 32, 56);
     padding: 50px;
@@ -349,8 +348,7 @@ div.watchlist {
     color: rgb(248, 240, 251);
 }
 div.ratingsList {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 100px;
     background-color: rgb(36, 32, 56);
     padding: 50px;
@@ -358,8 +356,7 @@ div.ratingsList {
     color: rgb(248, 240, 251);
 }
 div.favorites {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 100px;
     background-color: rgb(36, 32, 56);
     padding: 50px;
