@@ -41,7 +41,7 @@ namespace M_TV_Info.Controllers
                 _context.Favourite.Remove(callMedia);
                 _context.SaveChanges();
 
-                return Ok();
+                return Ok(model);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace M_TV_Info.Controllers
                 _context.Favourite.Add(model);
                 _context.SaveChanges();
 
-                return Ok();
+                return Ok(model);
             }
         }
         

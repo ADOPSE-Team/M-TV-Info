@@ -20,10 +20,8 @@ $(document).ready( function() {
             data: _item,
             //contentType: "application/json; charset=utf-8",
             success: function () {
-                
+                location.reload();
             }
         });
-
-        
     });
 });
