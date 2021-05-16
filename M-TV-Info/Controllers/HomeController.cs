@@ -111,6 +111,18 @@ namespace M_TV_Info.Controllers
             return View(content);
         }
 
+        [HttpPost]
+        public ActionResult RemoveFromFavourites(int id)
+        {
+            var getFav = _context.Favourite.Where(f => f.id == id).First();
+            
+            _context.Favourite.Remove(getFav);
+
+            _context.SaveChanges();
+
+            return Redirect("Favorites");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

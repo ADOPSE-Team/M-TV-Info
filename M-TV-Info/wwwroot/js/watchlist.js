@@ -25,18 +25,18 @@ $(document).ready( function() {
 });
 
 // Remove From WatchList
-$(document).ready( function(){
-    $('#removeWatch').click( function(){
-        var watch_id = $('#watch_id').val();
-        $.ajax({
-            type: "POST", //HTTP POST Method
-            url: "/api/AjaxAPI/RemoveFromWatchList",
-            dataType: "int",
-            data: watch_id,
-            success: function (data) {
-                alert("Succesfully Deleted");
-            }
-        });
-        location.reload();
-    });
-});
+// $(document).ready( function(){
+//     $('#removeWatch').click( function(){
+//         var watch_id = $('#watch_id').val();
+//         $.ajax({
+//             type: "POST", //HTTP POST Method
+//             url: "/api/AjaxAPI/RemoveFromWatchList",
+//             dataType: "int",
+//             data: watch_id,
+//             success: function (data) {
+//                 alert("Succesfully Deleted");
+//             }
+//         });
+//         location.reload();
+//     });
+// });
