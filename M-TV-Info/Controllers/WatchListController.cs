@@ -55,7 +55,7 @@ namespace M_TV_Info.Controllers
         }
 
         // Remove From WatchList
-        [Route("api/AjaxAPI/RemoveFromWatchList")]
+        [Route("WatchList/RemoveFromWatchList")]
         [HttpPost]
         public ActionResult RemoveFromWatchList(int id)
         {
@@ -65,7 +65,7 @@ namespace M_TV_Info.Controllers
 
             _context.SaveChanges();
 
-            return Ok("Deleted");
+            return Ok("Home/Watchlist");
         }
     }
 }

@@ -47,10 +47,13 @@
                     {
                         String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
                         <div class="movieEntry">
-                            <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id class="alist"><img src=@path alt="@item.movie_title" class="listMoviePoster"></a>
+                            <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id class="alist">
+                                <img src=@path alt="@item.movie_title" class="listMoviePoster">
+                            </a>
 
                             @using (Html.BeginForm("RemoveFromFavourites", "Favourites", FormMethod.Post))
                             {
+                                <h3 style="align-self: center;margin-left: 5px; color:#242038">@item.movie_title</h3>
                                 <input type="hidden" id="fav_id" name="id" value="@item.id">
                                 <button type="submit"><img src="~/assets/DeleteButton.png" width=50px height=50px id="removeFav" class="deleteButton" /></button>
                             }

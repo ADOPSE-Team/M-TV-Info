@@ -46,9 +46,17 @@
             {
                 String path = "https://image.tmdb.org/t/p/original" + @item.poster_path;
                 <div class="movieEntry">
-                    <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id class="alist"><img src=@path alt="@item.movie_title" class="listMoviePoster"></a>
-                    <h3 style="align-self: center;margin-left: 5px; color:#242038">@item.movie_title</h3><img src="~/assets/DeleteButton.png" width=50px height=50px id="removeWatch" class="deleteButton" />
-                    <input type="hidden" id="watch_id" value="@item.id">
+                    <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id class="alist">
+                        <img src=@path alt="@item.movie_title" class="listMoviePoster">
+                    </a>
+                    @using (Html.BeginForm("RemoveFromWatchList", "WatchList/RemoveFromWatchList", FormMethod.Post))
+                    {
+                        <h3 style="align-self: center;margin-left: 5px; color:#242038">@item.movie_title</h3>
+                        <button type="submit">
+                            <input type="hidden" id="watch_id" value="@item.id">
+                            <img src="~/assets/DeleteButton.png" width=50px height=50px id="removeWatch" class="deleteButton" />
+                        </button>
+                    }
                 </div>
             }
         </div>
