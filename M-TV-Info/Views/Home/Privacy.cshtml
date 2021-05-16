@@ -2,24 +2,75 @@
     ViewData["Title"] = "About";
 }
 <h1>@ViewData["Title"]</h1>
-<div style="display:flex; flex-wrap:wrap">
-    <p>
-        <img src="~/assets/giorgos.png" />
-        Καρανικόλας Γιώργος - Project Manager
-    </p>
-    
-    <p>
-        <img src="~/assets/dimitris.png" />
-        Τζήκας Δημήτρης - Tester, Auth Dev
-    </p>
-    
-    <p>
-        <img src="~/assets/xristos.png" />
-        Λάμαΐ Κριστέλ - Back-End Dev
-    </p>
-    
-    <p>
-        <img src="~/assets/giannis.png" />
-        Τσιλίκας Ιωάννης - Front-End Dev
-    </p>    
+
+<!------ Include the above in your HEAD tag ---------->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container">
+    <div class="row">
+        <!-- 4th Member Card -->
+        <div class="col-lg-3 col-sm-6">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img src="~/assets/giorgos.png" />
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <h3 style="color: darkblue; font-size: 103%;">Καρανικόλας Γιώργος</h3>
+                    </div>
+                    <div class="desc">Project Manager</div>
+                </div>
+            </div>
+        </div>
+        <!-- 4th Member Card -->
+        <div class="col-lg-3 col-sm-6">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img src="~/assets/dimitris.png" />
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <h3 style="color: darkblue; font-size: 103%;">Τζήκας Δημήτρης</h3>
+                    </div>
+                    <div class="desc">Tester, Auth Dev</div>
+                </div>
+            </div>
+        </div>
+        <!-- 4th Member Card -->
+        <div class="col-lg-3 col-sm-6">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img src="~/assets/xristos.png" />
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <h3 style="color: darkblue; font-size: 103%;">Λάμαΐ Κριστέλ</h3>
+                    </div>
+                    <div class="desc">Back-End Dev</div>
+                </div>
+            </div>
+        </div>
+        <!-- 4th Member Card -->
+        <div class="col-lg-3 col-sm-6">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img src="~/assets/giannis.png" />
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <h3 style="color: darkblue; font-size: 103%;">Τσιλίκας Ιωάννης</h3>
+                    </div>
+                    <div class="desc">Front-End Dev</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
