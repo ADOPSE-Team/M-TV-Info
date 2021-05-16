@@ -17,22 +17,20 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div id="col">
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/1.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/2.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/3.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/4.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/5.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/6.jpg" class="d-block w-100" alt="..."></a>
+                            @foreach (var item in Model.RatingsModel.Take(6))
+                            {
+                                String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
+                                <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id><img src=@path class="imagePosterCarousel" alt="@item.movie_title"></a>
+                            }
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div id="col">
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/7.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/8.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/9.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
-                            <a asp-controller="Home" asp-action="MovieView"><img src="~/assets/10.jpg" class="d-block w-100" alt="..."></a>
+                            @foreach (var item in Model.RatingsModel.Skip(6).Take(6))
+                            {
+                                String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
+                                <a asp-controller="Home" asp-action="MovieView" asp-route-id=@item.media_id><img src=@path class="imagePosterCarousel" alt="@item.movie_title"></a>
+                            }
                         </div>
                     </div>
                 </div>
