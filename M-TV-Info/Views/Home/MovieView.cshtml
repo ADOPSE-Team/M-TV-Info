@@ -15,8 +15,15 @@
             <div class="btnPoster">
                 @{
                     String path = "https://image.tmdb.org/t/p/original" + @Model.poster_path;
+                    if(@Model.poster_path is not null)
+                           {
+                        <img src=@path class="searchPoster">
+                    }
+                            else
+                    {
+                        <img src=/assets/1.jpg style=" justify-self: start; margin-left: 6%;" class="searchPoster">
+                    }
                 }
-                <img src=@path class="moviePoster" />
 
                 @if (User.Identity.IsAuthenticated)
                 {
