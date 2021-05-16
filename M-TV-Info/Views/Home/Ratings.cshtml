@@ -46,48 +46,90 @@
             <h2 id="border-bottom">Full list</h2>
             <div class="ratingList">
                 <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center; font-size: 42px;">Movie Title</h3>
-                    <div class="rate">
-                        <span style="font-size: 29px;">Rating:</span>
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
+                    @foreach (var item in Model.RatingsModel)
+                    {
+                        String path = "https://image.tmdb.org/t/p/original" + @item.movie_poster;
+                        <img src="@path" width=100px height=148px />
+                        <h3 style="align-self:center; font-size: 42px;">@item.movie_title</h3>
+
+                        <div class="rate">
+                            <span style="font-size: 29px;">Rating:</span>
+                            @* 5 Stars *@
+                            @if(@item.rate == 5)
+                            {
+                                <input type="radio" id="star5" name="rate" value="5" checked/>
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            }
+                            @* 4 Stars *@
+                            else if(@item.rate == 4)
+                            {
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" checked/>
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            }
+                            @* 3 Stars *@
+                            else if(@item.rate == 3)
+                            {
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" checked/>
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            }
+                            @* 2 Stars *@
+                            else if(@item.rate == 2)
+                            {
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" checked/>
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            }
+                            @* 1 Stars *@
+                            else if(@item.rate == 1)
+                            {
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" checked/>
+                                <label for="star1" title="text">1 star</label>
+                            }
+                        </div>
+                    }
+                    <div class="ratingButtons">
+                        <img src="~/assets/editButton.png" width=50px height=50px />
+                        <img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" />
                     </div>
-                    <div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
-                </div>
-                <div class="ratingEntry">
-                    <img src="~/assets/1.jpg" width=100px height=148px /> <h3 style="align-self:center;">Movie Title</h3><div class=" rating"><h3>My Rating: 10</h3><img src="~/assets/star.png" width=25px height=25px style="align-self:center;" /></div><div class="ratingButtons"><img src="~/assets/editButton.png" width=50px height=50px /><img src="~/assets/DeleteButton.png" width=50px height=50px class="deleteButton" /></div>
                 </div>
             </div>
         </div>
